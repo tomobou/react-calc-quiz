@@ -1,5 +1,5 @@
 body{
-    font-size: 24px;
+    font-size: xx-large;
 }
 
 h3{
@@ -28,11 +28,15 @@ h3{
 
 .questioner{
     display: flex;
-    width: 500px;
+    width: 100%;
     height: 300px; 
     vertical-align: center;
+    text-align: center;
     font-size: xx-large;
     flex-flow: wrap;
+}
+.question-content{
+    padding-left: 20px;
 }
 
 .number-selector-row{
@@ -42,59 +46,20 @@ h3{
 }
 
 .number-selector {
-
-    width: 100px;
-    height:100px;
+    width: calc(100% / 5 - 10px);
+    height:20vw;
     font-size: x-large;
     margin-right: 10px;
     margin-bottom:10px;
     background-color: rgb(184, 245, 245);
 }
 
-.selected {
-    background: #99F;
-}
-
 button {
     cursor: pointer;
 }
 
-.save {
-    width: 80px;
-    height: 34px;
-    color: #fff;
-    text-align: center;
-    background-color: #09a690;
-    border-radius: 3px;
-    float: left;
-
-    margin-bottom: 30px;
-}
-.load {
-    width: 80px;
-    height: 34px;
-    color: #fff;
-    text-align: center;
-    background-color: #335588;
-    border-radius: 3px;
-    float: left;
-
-    margin-bottom: 30px;
-}
-.clear {
-    width: 80px;
-    height: 34px;
-    color: #fff;
-    text-align: center;
-    background-color: #DD6666;
-    border-radius: 3px;
-    float: left;
-
-    margin-left: 60px;
-    margin-bottom: 30px;
-}
 .button-row {
-    width: 400px;
+    width: 100%;
 }
 .button-row:after {
     clear: left;
@@ -102,25 +67,18 @@ button {
     display: block;
 }
 
-.next-prediction {
-    width: 80px;
-    height: 34px;
-    color: #fff;
-    text-align: center;
-    background-color: #9955ff;
-    border-radius: 3px;
-
-    margin-bottom: 30px;
-    margin-right: 10px;
-}
-.next-prediction-text {
+table.answer-results-view{
     font-size: small;
-    color: #666677;
 }
-
-.history-view{
-    width: 300px;
-    height: 200px;
-    overflow-y: scroll;
-    font-size: 16px;
+table.answer-results-view thead tr{
+    font-size: small;
+}
+.align-right{
+    text-align: right;
+}
+td.yellow{
+    color: #866c03;
+}
+td.red{
+    color: red;
 }
