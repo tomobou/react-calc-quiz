@@ -98,7 +98,7 @@ class Game extends React.Component<GameProps, GameStates> {
         }
         quizLevel1 = shuffle(quizLevel1.filter(quiz => quiz.a <= 10));
 
-        quizLevel1 = quizLevel1.slice(0,3);// テスト用に3問にする
+        //quizLevel1 = quizLevel1.slice(0,3);// テスト用に3問にする
         this.state = {
             quizs: quizLevel1,
             currentQuiz: undefined,
