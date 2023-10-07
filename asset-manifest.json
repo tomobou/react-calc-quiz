@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/react-calc-quiz/static/css/main.30b51f57.chunk.css",
-    "main.js": "/react-calc-quiz/static/js/main.336123bc.chunk.js",
-    "main.js.map": "/react-calc-quiz/static/js/main.336123bc.chunk.js.map",
+    "main.css": "/react-calc-quiz/static/css/main.a4c1e3dd.chunk.css",
+    "main.js": "/react-calc-quiz/static/js/main.14aec84c.chunk.js",
+    "main.js.map": "/react-calc-quiz/static/js/main.14aec84c.chunk.js.map",
     "runtime-main.js": "/react-calc-quiz/static/js/runtime-main.f312a7de.js",
     "runtime-main.js.map": "/react-calc-quiz/static/js/runtime-main.f312a7de.js.map",
     "static/js/2.3d6de98b.chunk.js": "/react-calc-quiz/static/js/2.3d6de98b.chunk.js",
     "static/js/2.3d6de98b.chunk.js.map": "/react-calc-quiz/static/js/2.3d6de98b.chunk.js.map",
     "index.html": "/react-calc-quiz/index.html",
-    "static/css/main.30b51f57.chunk.css.map": "/react-calc-quiz/static/css/main.30b51f57.chunk.css.map",
+    "static/css/main.a4c1e3dd.chunk.css.map": "/react-calc-quiz/static/css/main.a4c1e3dd.chunk.css.map",
     "static/js/2.3d6de98b.chunk.js.LICENSE.txt": "/react-calc-quiz/static/js/2.3d6de98b.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.f312a7de.js",
     "static/js/2.3d6de98b.chunk.js",
-    "static/css/main.30b51f57.chunk.css",
-    "static/js/main.336123bc.chunk.js"
+    "static/css/main.a4c1e3dd.chunk.css",
+    "static/js/main.14aec84c.chunk.js"
   ]
 }
