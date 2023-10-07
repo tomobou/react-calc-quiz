@@ -27,7 +27,7 @@ interface QuestionerProps {
     currentQuiz?: Quiz,
     whichQuiz: number,
     onClick: (value: string) => void
-    wrong?: boolean
+    wrongCount: number
 }
 
 class Questioner extends React.Component<QuestionerProps> {
@@ -40,7 +40,7 @@ class Questioner extends React.Component<QuestionerProps> {
             </h3>
             <div>
                 {this.props.currentQuiz && this.props.currentQuiz.q}
-                {this.props.wrong === true && <div className='shake'>x</div>}
+                {this.props.wrongCount > 0 && <div className='shake'>{"".padStart(this.props.wrongCount,"×")}</div>}
             </div>
         </div>
         )
@@ -79,7 +79,7 @@ interface GameStates {
     quizs: Quiz[],
     currentQuiz?: Quiz,
     whichQuiz: number,
-    wrong?: boolean,
+    wrongCount: number,
     startTime?: number,
     endTime?: number
 }
@@ -102,14 +102,15 @@ class Game extends React.Component<GameProps, GameStates> {
         this.state = {
             quizs: quizLevel1,
             currentQuiz: undefined,
-            whichQuiz: -1
+            whichQuiz: -1,
+            wrongCount: 0
         };
     }
     handleSelect(value: string) {
         if(this.state.currentQuiz){  
-            this.setState(state => ({wrong:false}));
             if(this.state.currentQuiz.a === parseInt(value)) {
-                    if(this.state.whichQuiz+1 === this.state.quizs.length){
+                this.setState(state => ({wrongCount:0}));
+                if(this.state.whichQuiz+1 === this.state.quizs.length){
                         this.setState(state => ({
                             currentQuiz: undefined,
                             whichQuiz: -1,
@@ -122,7 +123,7 @@ class Game extends React.Component<GameProps, GameStates> {
                         }));
                     }
             }else{
-                this.setState(state => ({wrong:true}));
+                this.setState(state => ({wrongCount:this.state.wrongCount+1}));
             }
         }
     }
@@ -138,7 +139,7 @@ class Game extends React.Component<GameProps, GameStates> {
 
         return (
             <div className="game">
-                <Questioner quizs={this.state.quizs} currentQuiz={this.state.currentQuiz} whichQuiz={this.state.whichQuiz} onClick={(value) => this.handleStart(value)} wrong={this.state.wrong}/>
+                <Questioner quizs={this.state.quizs} currentQuiz={this.state.currentQuiz} whichQuiz={this.state.whichQuiz} onClick={(value) => this.handleStart(value)} wrongCount={this.state.wrongCount}/>
                 <div>　{this.state.endTime && (this.state.endTime - this.state.startTime!!)/1000 + "秒でできたよ。"}</div>
                 <NumberSelector onClick={(value) => this.handleSelect(value)} />
             </div>
