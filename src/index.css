@@ -6,6 +6,20 @@ h3{
     width : 100%;
 }
 
+.shake {
+    display: inline-block;
+    color:#DD6666;
+    animation: hurueru 1s infinite;
+}
+
+@keyframes shake {
+    0% {transform: translate(0px, 0px) rotateZ(0deg)}
+    25% {transform: translate(10px, 10px) rotateZ(1deg)}
+    50% {transform: translate(0px, 10px) rotateZ(0deg)}
+    75% {transform: translate(10px, 0px) rotateZ(-1deg)}
+    100% {transform: translate(0px, 0px) rotateZ(0deg)}
+}
+
 .game {
     display: flex;
     flex-direction: column;
@@ -28,11 +42,12 @@ h3{
 
 .number-selector {
 
-    width: 80px;
-    height:80px;
+    width: 100px;
+    height:100px;
     font-size: x-large;
-    margin-right: 10px;margin-bottom:10px;
-    background-color: rgb(240, 241, 164);
+    margin-right: 10px;
+    margin-bottom:10px;
+    background-color: rgb(184, 245, 245);
 }
 
 .selected {
