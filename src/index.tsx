@@ -42,7 +42,7 @@ interface QuestionerProps {
     quizs: Quiz[],
     currentQuiz?: Quiz,
     whichQuiz: number,
-    onClick: (value: string) => void
+    onClick: (value: string, quizCount?:number) => void
     wrongCount: number
 }
 
@@ -62,14 +62,14 @@ class Questioner extends React.Component<QuestionerProps> {
             )
         }else{
             return(
-                <QuizSelector onClick={(value)=>this.props.onClick(value)}></QuizSelector>
+                <QuizSelector onClick={(value,quizCount)=>this.props.onClick(value,quizCount)}></QuizSelector>
                 )
         }
     }
 }
 
 interface QuizSelectorProps {
-    onClick: (value: string) => void
+    onClick: (value: string, quizCount?:number) => void
 }
 
 class QuizSelector extends React.Component<QuizSelectorProps> {
@@ -78,10 +78,13 @@ class QuizSelector extends React.Component<QuizSelectorProps> {
             <div className="questioner">
                 <h3>もんだいをえらんでね！</h3>
                 <div className="question-content">
-                <button onClick={() => this.props.onClick("tasizan1_3")}>れんしゅう</button>
+                <button onClick={() => this.props.onClick("tasizan1",3)}>れんしゅう</button>
                 </div>
                 <div className="question-content">
-                  <button onClick={() => this.props.onClick("tasizan1_ALL")}>たしざん１</button>
+                  <button onClick={() => this.props.onClick("tasizan1")}>たしざん１</button>
+                </div>
+                <div className="question-content">
+                  <button onClick={() => this.props.onClick("hikizan2")}>ひきざん２</button>
                 </div>
             </div>
             )
@@ -162,16 +165,44 @@ interface GameStates {
     endTime?: number
 }
 
-function craeteQuizs(quizLevel: string): Array<Quiz>{
-    // 答えが10までのたしざん
-    let quizLevel1 = Array<Quiz>();
-    for(let a = 0; a < 10; a++){
-        for(let b = 0; b < 10; b++){
-            quizLevel1.push({q:`${a} + ${b} =`, a:(a+b)})
+function craeteQuizs(quizLevel: string, quizCount?:number): Array<Quiz>{
+    let quizs = Array<Quiz>();
+    if(quizLevel.startsWith("tasizan1")){
+        // 答えが10までのたしざん
+        for(let a = 0; a < 10; a++){
+            for(let b = 0; b < 10; b++){
+                quizs.push({q:`${a} + ${b} =`, a:(a+b)})
+            }
         }
+        quizs = shuffle(quizs.filter(quiz => quiz.a <= 10));
+    }else if(quizLevel.startsWith("hikizan2")){
+        // 10から0までのひきざん
+        for(let a = 0; a < 10; a++){
+            for(let b = 0; b < 10; b++){
+                quizs.push({q:`${a} - ${b} =`, a:(a-b)})
+            }
+        }
+        quizs = shuffle(quizs.filter(quiz => quiz.a >= 0));
     }
-    quizLevel1 = shuffle(quizLevel1.filter(quiz => quiz.a <= 10));
-    return quizLevel.endsWith("_3")? quizLevel1.slice(0,3):quizLevel1
+    // else if(quizLevel.startsWith("tasizan3")){
+    //     // 答えが10より大きいたしざん
+    //     for(let a = 0; a < 10; a++){
+    //         for(let b = 0; b < 10; b++){
+    //             quizs.push({q:`${a} + ${b} =`, a:(a+b)})
+    //         }
+    //     }
+    //     quizs = shuffle(quizs.filter(quiz => quiz.a > 10));
+    // }else if(quizLevel.startsWith("hikizan4")){
+    //     // 10から0までのひきざん
+    //     for(let a = 0; a < 10; a++){
+    //         for(let b = 0; b < 10; b++){
+    //             quizs.push({q:`${a} - ${b} =`, a:(a-b)})
+    //         }
+    //     }
+    //     quizs = shuffle(quizs.filter(quiz => quiz.a >= 0));
+    // }
+
+    return (quizCount) ? quizs.slice(0,Math.min(quizCount,quizs.length)) : quizs;
 }
 
 class Game extends React.Component<GameProps, GameStates> {
@@ -218,8 +249,8 @@ class Game extends React.Component<GameProps, GameStates> {
             }
         }
     }
-    handleStart(value: string){
-        const quizs = craeteQuizs(value)
+    handleStart(value: string, quizCount?:number){
+        const quizs = craeteQuizs(value, quizCount)
         this.setState(state => ({
             quizs: quizs,
             results: [],
@@ -232,7 +263,7 @@ class Game extends React.Component<GameProps, GameStates> {
     render() {
         return (
             <div className="game">
-                <Questioner quizs={this.state.quizs} currentQuiz={this.state.currentQuiz} whichQuiz={this.state.whichQuiz} onClick={(value) => this.handleStart(value)} wrongCount={this.state.wrongCount}/>
+                <Questioner quizs={this.state.quizs} currentQuiz={this.state.currentQuiz} whichQuiz={this.state.whichQuiz} onClick={(value,quizCount) => this.handleStart(value,quizCount)} wrongCount={this.state.wrongCount}/>
                 <NumberSelector onClick={(value) => this.handleSelect(value)} />
                 {this.state.endTime && <AnswerResultsView totalLapTime={this.state.endTime!! - this.state.startTime!!} results={this.state.results} />}
             </div>
