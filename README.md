@@ -25,3 +25,8 @@ github pagesで動作させるようにしています。
 
 github pages への公開の仕方などを参考にさせていただきました。
 - https://qiita.com/EisKern/items/15dcf7864fa49df8f247
+
+## image
+
+いらすとや より、花型の評価印5点を使用させていただいています。
+https://www.irasutoya.com/2014/04/blog-post_4947.html

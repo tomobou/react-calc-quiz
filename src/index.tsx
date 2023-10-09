@@ -78,7 +78,7 @@ class Game extends React.Component<GameProps, GameStates> {
             <div className="game">
                 <Questioner quizs={this.state.quizs} currentQuiz={this.state.currentQuiz} whichQuiz={this.state.whichQuiz} setQuizs={(quizs) => this.handleStart(quizs)} wrongCount={this.state.wrongCount} />
                 <NumberSelector onClick={(value) => this.handleSelect(value)} />
-                {this.state.endTime && <AnswerResultsView results={this.state.results} />}
+                {this.state.endTime && <AnswerResultsView results={this.state.results}/>}
             </div>
         )
     }

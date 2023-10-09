@@ -25,15 +25,17 @@ export default class QuizSelector extends React.Component<QuizSelectorProps> {
     render() {
         return (
             <div className="questioner">
-                <h3>もんだいをえらんでね！</h3>
-                {this.quizButtons.map((quizButton) => {
-                    return (
-                        <div className="question-content">
-                            <button onClick={() => this.props.setQuizs(quizButton.quizBook.quizs(quizButton.quizCount))}>{quizButton.name}</button>
-                        </div>
-                    )
-                }
-                )}
+                <h5>もんだいをえらんでね！</h5>
+                <div className='question-select'>
+                    {this.quizButtons.map((quizButton, index) => {
+                        return (
+                            <div key={"question-select-content-" + index} className="question-select-content">
+                                <button className="question-select-button" onClick={() => this.props.setQuizs(quizButton.quizBook.quizs(quizButton.quizCount))}>{quizButton.name}</button>
+                            </div>
+                        )
+                    }
+                    )}
+                </div>
             </div>
         )
     }

@@ -15,9 +15,9 @@ export default class Questioner extends React.Component<QuestionerProps> {
         if (this.props.currentQuiz) {
             return (
                 <div className="questioner">
-                    <h3>
+                    <h5>
                         {this.props.whichQuiz + 1}問目（ぜんぶで {this.props.quizs.length} 問）
-                    </h3>
+                    </h5>
                     <div className="question-content">
                         {this.props.currentQuiz && this.props.currentQuiz.q}
                         {this.props.wrongCount > 0 && <div className='shake'>{"".padStart(this.props.wrongCount, "×")}</div>}
