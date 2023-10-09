@@ -1,12 +1,12 @@
 import React from 'react';
-import AnswerResult from '../domain/AnswerResult';
+import {AnswerResult, getTotalLapTime} from '../domain/AnswerResult';
 
 interface AnswerResultsViewProps {
     results: AnswerResult[]
 }
 
 export default class AnswerResultsView extends React.Component<AnswerResultsViewProps> {
-    private totalLapTime = this.props.results.reduce((a, b) => a.endTime!! > b.endTime!! ? a : b).endTime!! - this.props.results.reduce((a, b) => a.startTime!! < b.startTime!! ? a : b).startTime!!;
+    private totalLapTime = getTotalLapTime(this.props.results);
     render() {
         const results = this.props.results.sort((a, b) => (a.wrongCount - b.wrongCount === 0) ? (a.endTime!! - a.startTime!!) - (b.endTime!! - b.startTime!!) : (a.wrongCount - b.wrongCount)).reverse();
 
