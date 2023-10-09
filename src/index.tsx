@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Quiz from './domain/Quiz';
 import AnswerResult from './domain/AnswerResult';
+import QuizSelector from './components/QuizSelector';
 import AnswerResultsView from './components/AnswerResultsView';
 import './index.css';
 
@@ -70,90 +71,6 @@ class Questioner extends React.Component<QuestionerProps> {
         }
     }
 }
-
-interface QuizSelectorProps {
-    setQuizs: (quizs:Array<Quiz>) => void
-}
-
-interface QuizBook{
-    name: String
-    quizs(quizCount?: number): Array<Quiz>
-}
-
-class Tasizan1 implements QuizBook{
-    name = "たしざん１"
-    quizs(quizCount?: number): Array<Quiz>{
-        let quizs = Array<Quiz>();
-        // 答えが10までのたしざん
-        for (let a = 0; a < 10; a++) {
-            for (let b = 0; b < 10; b++) {
-                quizs.push({ q: `${a} + ${b} =`, a: (a + b) })
-            }
-        }
-        quizs = shuffle(quizs.filter(quiz => quiz.a <= 10));
-        return (quizCount) ? quizs.slice(0, Math.min(quizCount, quizs.length)) : quizs;
-    }
-}
-
-class Hikizan2 implements QuizBook{
-    name = "ひきざん２"
-    quizs(quizCount?: number): Array<Quiz>{
-        let quizs = Array<Quiz>();
-        // 10から0までのひきざん
-        for (let a = 0; a < 10; a++) {
-            for (let b = 0; b < 10; b++) {
-                quizs.push({ q: `${a} - ${b} =`, a: (a - b) })
-            }
-        }
-        quizs = shuffle(quizs.filter(quiz => quiz.a >= 0));
-        return (quizCount) ? quizs.slice(0, Math.min(quizCount, quizs.length)) : quizs;
-    }
-}
-
-interface QuizButton {
-    name: string,
-    quizCount?: number,
-    quizBook: QuizBook
-}
-
-class QuizSelector extends React.Component<QuizSelectorProps> {
-    private quizButtons = Array<QuizButton>();
-    constructor(props: QuizSelectorProps | Readonly<QuizSelectorProps>) {
-        super(props);
-        const tasizan1 = new Tasizan1();
-        const hikizan2 = new Hikizan2();
-        this.quizButtons.push({name:"れんしゅう", quizBook:tasizan1, quizCount: 3});
-        this.quizButtons.push({name:"たしざん１", quizBook:tasizan1});
-        this.quizButtons.push({name:"ひきざん２", quizBook:hikizan2});
-    }
-    render() {
-        return (
-            <div className="questioner">
-                <h3>もんだいをえらんでね！</h3>
-                {this.quizButtons.map((quizButton) => {
-                    return(
-                        <div className="question-content">
-                            <button onClick={() => this.props.setQuizs(quizButton.quizBook.quizs(quizButton.quizCount))}>{quizButton.name}</button>
-                        </div>
-                    )
-                    }
-                )}
-            </div>
-        )
-    }
-}
-
-function shuffle<T>(arr: Array<T>): Array<T> {
-    for (var i = arr.length - 1; i > 0; i = 0 | i - 1) {
-        var j = 0 | Math.random() * (i + 1);
-        var swap = arr[i];
-        arr[i] = arr[j];
-        arr[j] = swap;
-    }
-    return arr;
-}
-
-
 
 
 interface GameProps {
