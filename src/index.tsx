@@ -2,83 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Quiz from './domain/Quiz';
 import AnswerResult from './domain/AnswerResult';
-import QuizSelector from './components/QuizSelector';
+import Questioner from './components/Questioner';
 import AnswerResultsView from './components/AnswerResultsView';
+import NumberSelector from './components/NumberSelector';
 import './index.css';
 
+interface GameProps {}
 
-interface NumberSelectorProps {
-    onClick: (value: string) => void
-}
-
-class NumberSelector extends React.Component<NumberSelectorProps> {
-    render() {
-        let values = [...Array(11)].map((_, i) => i.toString());
-        return (
-            <div>
-                <div className="number-selector-row">
-                    {values.slice(0, 1).map((value) => {
-                        return (
-                            <button key={"number-selector-" + value} className="number-selector" onClick={() => this.props.onClick(value)}>{value}</button>
-                        )
-                    })}
-                </div>
-                <div className="number-selector-row">
-                    {values.slice(1, 6).map((value) => {
-                        return (
-                            <button key={"number-selector-" + value} className="number-selector" onClick={() => this.props.onClick(value)}>{value}</button>
-                        )
-                    })}
-                </div>
-                <div className="number-selector-row">
-                    {values.slice(6, 11).map((value) => {
-                        return (
-                            <button key={"number-selector-" + value} className="number-selector" onClick={() => this.props.onClick(value)}>{value}</button>
-                        )
-                    })}
-                </div>
-            </div>
-        )
-    }
-}
-
-interface QuestionerProps {
-    quizs: Quiz[],
-    currentQuiz?: Quiz,
-    whichQuiz: number,
-    setQuizs: (quizs : Quiz[]) => void
-    wrongCount: number
-}
-
-class Questioner extends React.Component<QuestionerProps> {
-    render() {
-        if (this.props.currentQuiz) {
-            return (
-                <div className="questioner">
-                    <h3>
-                        {this.props.whichQuiz + 1}問目（ぜんぶで {this.props.quizs.length} 問）
-                    </h3>
-                    <div className="question-content">
-                        {this.props.currentQuiz && this.props.currentQuiz.q}
-                        {this.props.wrongCount > 0 && <div className='shake'>{"".padStart(this.props.wrongCount, "×")}</div>}
-                    </div>
-                </div>
-            )
-        } else {
-            return (
-                <QuizSelector setQuizs={(quizs) => this.props.setQuizs(quizs)}></QuizSelector>
-            )
-        }
-    }
-}
-
-
-interface GameProps {
-
-}
 interface GameStates {
     quizs: Quiz[],
-    results: AnswerResult[]
+    results: AnswerResult[],
     currentQuiz?: Quiz,
     whichQuiz: number,
     wrongCount: number,
@@ -89,7 +22,6 @@ interface GameStates {
 class Game extends React.Component<GameProps, GameStates> {
     constructor(props: GameProps | Readonly<GameProps>) {
         super(props);
-        //quizLevel1 = quizLevel1.slice(0,3);// テスト用に3問にする
         this.state = {
             quizs: [],
             results: [],

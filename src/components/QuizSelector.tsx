@@ -2,16 +2,14 @@ import React from 'react';
 import Quiz from '../domain/Quiz';
 import {QuizBook, tasizan1, hikizan2} from '../domain/QuizBook';
 
-
-interface QuizSelectorProps {
-    setQuizs: (quizs:Array<Quiz>) => void
-}
-
-
 interface QuizButton {
     name: string,
     quizCount?: number,
     quizBook: QuizBook
+}
+
+interface QuizSelectorProps {
+    setQuizs: (quizs:Array<Quiz>) => void
 }
 
 export default class QuizSelector extends React.Component<QuizSelectorProps> {
