@@ -1,14 +1,24 @@
 import Quiz from '../domain/Quiz';
 
 
-export interface QuizBook{
+export interface QuizBook {
     name: String,
     quizs(quizCount?: number): Array<Quiz>
 }
 
-class Tasizan1 implements QuizBook{
+function shuffle<T>(arr: Array<T>): Array<T> {
+    for (var i = arr.length - 1; i > 0; i = 0 | i - 1) {
+        var j = 0 | Math.random() * (i + 1);
+        var swap = arr[i];
+        arr[i] = arr[j];
+        arr[j] = swap;
+    }
+    return arr;
+}
+
+class Tasizan1 implements QuizBook {
     name = "答えが10までのたしざん"
-    quizs(quizCount?: number): Array<Quiz>{
+    quizs(quizCount?: number): Array<Quiz> {
         let quizs = Array<Quiz>();
         for (let x = 0; x < 10; x++) {
             for (let y = 0; y < 10; y++) {
@@ -21,9 +31,9 @@ class Tasizan1 implements QuizBook{
 }
 export const tasizan1 = new Tasizan1();
 
-class Hikizan2 implements QuizBook{
+class Hikizan2 implements QuizBook {
     name = "10から0までのひきざん"
-    quizs(quizCount?: number): Array<Quiz>{
+    quizs(quizCount?: number): Array<Quiz> {
         let quizs = Array<Quiz>();
         for (let x = 0; x < 10; x++) {
             for (let y = 0; y < 10; y++) {
@@ -35,14 +45,3 @@ class Hikizan2 implements QuizBook{
     }
 }
 export const hikizan2 = new Hikizan2();
-
-
-function shuffle<T>(arr: Array<T>): Array<T> {
-    for (var i = arr.length - 1; i > 0; i = 0 | i - 1) {
-        var j = 0 | Math.random() * (i + 1);
-        var swap = arr[i];
-        arr[i] = arr[j];
-        arr[j] = swap;
-    }
-    return arr;
-}

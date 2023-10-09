@@ -6,7 +6,7 @@ interface QuestionerProps {
     quizs: Quiz[],
     currentQuiz?: Quiz,
     whichQuiz: number,
-    setQuizs: (quizs : Quiz[]) => void
+    setQuizs: (quizs: Quiz[]) => void
     wrongCount: number
 }
 

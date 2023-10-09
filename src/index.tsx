@@ -7,7 +7,7 @@ import AnswerResultsView from './components/AnswerResultsView';
 import NumberSelector from './components/NumberSelector';
 import './index.css';
 
-interface GameProps {}
+interface GameProps { }
 
 interface GameStates {
     quizs: Quiz[],
@@ -67,7 +67,7 @@ class Game extends React.Component<GameProps, GameStates> {
         this.setState(state => ({
             quizs: quizs,
             results: [],
-            currentQuiz: (quizs.length>0) ? quizs[0] : undefined,
+            currentQuiz: (quizs.length > 0) ? quizs[0] : undefined,
             whichQuiz: 0,
             startTime: Date.now(),
             endTime: undefined
