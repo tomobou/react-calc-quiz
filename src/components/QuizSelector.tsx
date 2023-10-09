@@ -19,8 +19,10 @@ export default class QuizSelector extends React.Component<QuizSelectorProps> {
     constructor(props: QuizSelectorProps | Readonly<QuizSelectorProps>) {
         super(props);
         this.quizButtons.push({name:"れんしゅう", quizBook:tasizan1, quizCount: 3});
-        this.quizButtons.push({name:"たしざん１", quizBook:tasizan1});
-        this.quizButtons.push({name:"ひきざん２", quizBook:hikizan2});
+        this.quizButtons.push({name:"たしざん１（ぜんぶ）", quizBook:tasizan1});
+        this.quizButtons.push({name:"ひきざん２（５もん）", quizBook:hikizan2, quizCount: 5});
+        this.quizButtons.push({name:"ひきざん２（１０もん）", quizBook:hikizan2, quizCount: 10});
+        this.quizButtons.push({name:"ひきざん２（ぜんぶ）", quizBook:hikizan2});
     }
     render() {
         return (
