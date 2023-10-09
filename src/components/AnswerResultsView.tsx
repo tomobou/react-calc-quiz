@@ -2,17 +2,17 @@ import React from 'react';
 import AnswerResult from '../domain/AnswerResult';
 
 interface AnswerResultsViewProps {
-    totalLapTime: number,
     results: AnswerResult[]
 }
 
 export default class AnswerResultsView extends React.Component<AnswerResultsViewProps> {
+    private totalLapTime = this.props.results.reduce((a,b)=>a.endTime!!>b.endTime!!?a:b).endTime!! - this.props.results.reduce((a,b)=>a.startTime!!<b.startTime!!?a:b).startTime!!;
     render() {
         const results = this.props.results.sort((a, b) => (a.wrongCount - b.wrongCount === 0) ? (a.endTime!! - a.startTime!!) - (b.endTime!! - b.startTime!!) : (a.wrongCount - b.wrongCount)).reverse();
 
         return (
             <div>
-                <div>{this.props.totalLapTime / 1000}秒でできたよ。</div>
+                <div>{this.totalLapTime / 1000}秒でできたよ。</div>
                 <table className="answer-results-view">
                     <thead>
                         <th>問題</th>

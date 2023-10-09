@@ -2,18 +2,17 @@ import Quiz from '../domain/Quiz';
 
 
 export interface QuizBook{
-    name: String
+    name: String,
     quizs(quizCount?: number): Array<Quiz>
 }
 
 class Tasizan1 implements QuizBook{
-    name = "たしざん１"
+    name = "答えが10までのたしざん"
     quizs(quizCount?: number): Array<Quiz>{
         let quizs = Array<Quiz>();
-        // 答えが10までのたしざん
-        for (let a = 0; a < 10; a++) {
-            for (let b = 0; b < 10; b++) {
-                quizs.push({ q: `${a} + ${b} =`, a: (a + b) })
+        for (let x = 0; x < 10; x++) {
+            for (let y = 0; y < 10; y++) {
+                quizs.push({ q: `${x} + ${y} =`, a: (x + y) })
             }
         }
         quizs = shuffle(quizs.filter(quiz => quiz.a <= 10));
@@ -23,13 +22,12 @@ class Tasizan1 implements QuizBook{
 export const tasizan1 = new Tasizan1();
 
 class Hikizan2 implements QuizBook{
-    name = "ひきざん２"
+    name = "10から0までのひきざん"
     quizs(quizCount?: number): Array<Quiz>{
         let quizs = Array<Quiz>();
-        // 10から0までのひきざん
-        for (let a = 0; a < 10; a++) {
-            for (let b = 0; b < 10; b++) {
-                quizs.push({ q: `${a} - ${b} =`, a: (a - b) })
+        for (let x = 0; x < 10; x++) {
+            for (let y = 0; y < 10; y++) {
+                quizs.push({ q: `${x} - ${y} =`, a: (x - y) })
             }
         }
         quizs = shuffle(quizs.filter(quiz => quiz.a >= 0));
