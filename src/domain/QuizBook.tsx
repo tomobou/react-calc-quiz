@@ -65,7 +65,7 @@ class Hikizan4 implements QuizBook {
     name = "くりさがりのあるひきざん"
     quizs(quizCount?: number): Array<Quiz> {
         let quizs = Array<Quiz>();
-        for (let x = 0; x < 20; x++) {
+        for (let x = 11; x < 20; x++) {
             for (let y = 0; y < 10; y++) {
                 quizs.push({ q: `${x} - ${y} =`, a: (x - y) })
             }
