@@ -45,3 +45,33 @@ class Hikizan2 implements QuizBook {
     }
 }
 export const hikizan2 = new Hikizan2();
+
+class Tasizan3 implements QuizBook {
+    name = "くりあがりのあるたしざん"
+    quizs(quizCount?: number): Array<Quiz> {
+        let quizs = Array<Quiz>();
+        for (let x = 0; x < 10; x++) {
+            for (let y = 0; y < 10; y++) {
+                quizs.push({ q: `${x} + ${y} =`, a: (x + y) })
+            }
+        }
+        quizs = shuffle(quizs.filter(quiz => quiz.a > 10));
+        return (quizCount) ? quizs.slice(0, Math.min(quizCount, quizs.length)) : quizs;
+    }
+}
+export const tasizan3 = new Tasizan3();
+
+class Hikizan4 implements QuizBook {
+    name = "くりさがりのあるひきざん"
+    quizs(quizCount?: number): Array<Quiz> {
+        let quizs = Array<Quiz>();
+        for (let x = 0; x < 20; x++) {
+            for (let y = 0; y < 10; y++) {
+                quizs.push({ q: `${x} - ${y} =`, a: (x - y) })
+            }
+        }
+        quizs = shuffle(quizs.filter(quiz => quiz.a < 9));
+        return (quizCount) ? quizs.slice(0, Math.min(quizCount, quizs.length)) : quizs;
+    }
+}
+export const hikizan4 = new Hikizan4();
