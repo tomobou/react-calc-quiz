@@ -21,13 +21,13 @@ export default class NumberSelector extends React.Component<NumberSelectorProps>
             }
         }
         return (
-            <div className='block'>
+            <div className='number-selector'>
                 {numberTables.map((values,index) => {
                     return (
                         <div key={"number-selector-row-" + index} className="number-selector-row">
                             {values.map((value) => {
                                 return (
-                                    <button key={"number-selector-" + value} className="number-selector" onClick={() => this.props.onClick(value)}>{value}</button>
+                                    <button key={"number-selector-item" + value} className="number-selector-item" onClick={() => this.props.onClick(value)}>{value}</button>
                                 )
                             })}
                         </div>

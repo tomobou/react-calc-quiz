@@ -3,7 +3,7 @@ body{
 }
 
 h5{
-    height: 48px;
+    height: 1em;
     width : 100vw;
     font-size: medium;
     margin: 0px;
@@ -41,34 +41,55 @@ h5{
 
 .questioner{
     display: flex;
-    height: 55vw; 
     font-size: xx-large;
     flex-flow: wrap;
+    height: 35vh;
+    overflow-y: auto;
 }
 .question-content{
     display: flex;
     width: 100vw;
     padding-left: 20px;
 }
-.question-select{
+
+
+.question-select {
     display: flex;
-    width: 100vw;
-    height:40vw;
-    overflow-y: scroll;
-    flex-flow: wrap;
-    border: rgb(128, 128, 128) 1px solid;
+    flex-wrap: wrap;
+    .question-select-item {
+        width: calc(33% - 10px * 2 / 3);
+        margin-left: 10px;
+        margin-top: 10px;
+        &:nth-child(-n+3) {
+        margin-top: 0;
+        }
+        &:nth-child(3n+1) {
+        margin-left: 0;
+        }
+    }
 }
-.question-select-content{
-    display: flex;
-    width: 100%;
-    height:30px;
-    margin-right: 10px;
-    margin-bottom:10px;
-    flex-flow: wrap;
-}
-.question-select-button{
+.question-select-item{
+    aspect-ratio: 4 / 1;
+    min-height: 2.5em;
     font-size: medium;
-    background-color: rgb(66, 147, 241);
+    border-top-right-radius: calc(20px);
+    display: inline-flex;
+    align-items: center;
+    flex-flow: wrap;
+    flex-direction: row;
+}
+.question-select-item-name{
+    width: 100%;
+}
+.question-select-item-remarks{
+    padding-left: 10%;
+    font-size: 0.8em;
+}
+
+.number-selector{
+    position: relative;
+    display: inline-block;
+    height: 60vh;
 }
 
 .number-selector-row{
@@ -76,10 +97,10 @@ h5{
     flex-flow: wrap;
 }
 
-.number-selector {
+.number-selector-item {
     width: calc(100% / 5 - 10px);
     height:20vw;
-    font-size: x-large;
+    font-size: 1.2em;
     margin-right: 10px;
     margin-bottom:10px;
     background-color: rgb(184, 245, 245);

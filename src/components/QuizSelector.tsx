@@ -4,6 +4,8 @@ import { QuizBook, tasizan1, hikizan2, tasizan3, hikizan4 } from '../domain/Quiz
 
 interface QuizButton {
     name: string,
+    remarks?: string,
+    color: string,
     quizCount?: number,
     quizBook: QuizBook
 }
@@ -16,14 +18,14 @@ export default class QuizSelector extends React.Component<QuizSelectorProps> {
     private quizButtons = Array<QuizButton>();
     constructor(props: QuizSelectorProps | Readonly<QuizSelectorProps>) {
         super(props);
-        this.quizButtons.push({ name: "れんしゅう", quizBook: tasizan1, quizCount: 3 });
-        this.quizButtons.push({ name: "たしざん１（ぜんぶ）", quizBook: tasizan1 });
-        this.quizButtons.push({ name: "ひきざん２（５もん）", quizBook: hikizan2, quizCount: 5 });
-        this.quizButtons.push({ name: "ひきざん２（ぜんぶ）", quizBook: hikizan2 });
-        this.quizButtons.push({ name: "たしざん３（５もん）", quizBook: tasizan3, quizCount: 5 });
-        this.quizButtons.push({ name: "たしざん３（ぜんぶ）", quizBook: tasizan3 });
-        this.quizButtons.push({ name: "ひきざん４（５もん）", quizBook: hikizan4, quizCount: 5 });
-        this.quizButtons.push({ name: "ひきざん４（ぜんぶ）", quizBook: hikizan4 });
+        this.quizButtons.push({ name: "れんしゅう", remarks: "３もん", color:"#D8898A", quizBook: tasizan1, quizCount: 3 });
+        this.quizButtons.push({ name: "たしざん１", remarks: "ぜんぶ", color:"#D8898A", quizBook: tasizan1 });
+        this.quizButtons.push({ name: "ひきざん２", remarks: "５もん", color:"#84B7DC", quizBook: hikizan2, quizCount: 5 });
+        this.quizButtons.push({ name: "ひきざん２", remarks: "ぜんぶ", color:"#84B7DC", quizBook: hikizan2 });
+        this.quizButtons.push({ name: "たしざん３", remarks: "５もん", color:"#F8BA62", quizBook: tasizan3, quizCount: 5 });
+        this.quizButtons.push({ name: "たしざん３", remarks: "ぜんぶ", color:"#F8BA62", quizBook: tasizan3 });
+        this.quizButtons.push({ name: "ひきざん４", remarks: "５もん", color:"#86A884", quizBook: hikizan4, quizCount: 5 });
+        this.quizButtons.push({ name: "ひきざん４", remarks: "ぜんぶ", color:"#86A884", quizBook: hikizan4 });
     }
     render() {
         return (
@@ -32,8 +34,10 @@ export default class QuizSelector extends React.Component<QuizSelectorProps> {
                 <div className='question-select'>
                     {this.quizButtons.map((quizButton, index) => {
                         return (
-                            <div key={"question-select-content-" + index} className="question-select-content">
-                                <button className="question-select-button" onClick={() => this.props.setQuizs(quizButton.quizBook.quizs(quizButton.quizCount))}>{quizButton.name}</button>
+                            <div key={"question-select-item-" + index} className="question-select-item" style={{ backgroundColor: quizButton.color}}
+                              onClick={() => this.props.setQuizs(quizButton.quizBook.quizs(quizButton.quizCount))}>
+                                <div className="question-select-item-name">{quizButton.name}</div>
+                                <div className="question-select-item-remarks">{quizButton.remarks}</div>
                             </div>
                         )
                     }

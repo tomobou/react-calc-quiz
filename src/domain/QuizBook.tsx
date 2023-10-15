@@ -17,7 +17,7 @@ function shuffle<T>(arr: Array<T>): Array<T> {
 }
 
 class Tasizan1 implements QuizBook {
-    name = "答えが10までのたしざん"
+    name = "10までのたしざん"
     quizs(quizCount?: number): Array<Quiz> {
         let quizs = Array<Quiz>();
         for (let x = 0; x < 10; x++) {
