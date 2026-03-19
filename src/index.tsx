@@ -17,6 +17,7 @@ interface GameStates {
   wrongCount: number;
   startTime?: number;
   endTime?: number;
+  voiceEnabled: boolean;
 }
 
 class Game extends React.Component<GameProps, GameStates> {
@@ -28,6 +29,7 @@ class Game extends React.Component<GameProps, GameStates> {
       currentQuiz: undefined,
       whichQuiz: -1,
       wrongCount: 0,
+      voiceEnabled: true,
     };
   }
   handleSelect(value: string) {
@@ -76,6 +78,10 @@ class Game extends React.Component<GameProps, GameStates> {
       endTime: undefined,
     });
   }
+
+  toggleVoiceEnabled = () => {
+    this.setState({ voiceEnabled: !this.state.voiceEnabled });
+  };
   render() {
     return (
       <div className="game">
@@ -84,9 +90,16 @@ class Game extends React.Component<GameProps, GameStates> {
           currentQuiz={this.state.currentQuiz}
           whichQuiz={this.state.whichQuiz}
           setQuizs={(quizs) => this.handleStart(quizs)}
-          wrongCount={this.state.wrongCount}
+          voiceEnabled={this.state.voiceEnabled}
+          onToggleVoice={this.toggleVoiceEnabled}
         />
-        <NumberSelector onClick={(value) => this.handleSelect(value)} />
+        <NumberSelector
+          onClick={(value) => this.handleSelect(value)}
+          voiceEnabled={
+            this.state.voiceEnabled && this.state.currentQuiz !== undefined
+          }
+          onToggleVoice={this.toggleVoiceEnabled}
+        />
         {this.state.endTime && (
           <AnswerResultsView results={this.state.results} />
         )}

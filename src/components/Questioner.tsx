@@ -7,7 +7,8 @@ interface QuestionerProps {
   currentQuiz?: Quiz;
   whichQuiz: number;
   setQuizs: (quizs: Quiz[]) => void;
-  wrongCount: number;
+  voiceEnabled: boolean;
+  onToggleVoice: () => void;
 }
 
 export default class Questioner extends React.Component<QuestionerProps> {
@@ -25,6 +26,12 @@ export default class Questioner extends React.Component<QuestionerProps> {
               <div className="shake">
                 {"".padStart(this.props.wrongCount, "×")}
               </div>
+            <div className="voice-toggle-container">
+              <button
+                className={this.props.voiceEnabled ? "voice-enabled" : "voice-disabled"}
+                onClick={this.props.onToggleVoice}>
+                {this.props.voiceEnabled ? "音声入力 ON" : "音声入力 OFF"}</button>
+            </div>
             )}
           </div>
         </div>

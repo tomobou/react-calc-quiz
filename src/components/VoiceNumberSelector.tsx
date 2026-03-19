@@ -146,7 +146,9 @@ export default class VoiceNumberSelector extends React.Component<
     console.log("Voice recognition result:", transcript);
 
     // 認識結果から数字を抽出 - より長いキーワードから優先的にマッチング
-    const sortedVoiceKeys = Object.keys(voiceToNumberMap).sort((a, b) => b.length - a.length);
+    const sortedVoiceKeys = Object.keys(voiceToNumberMap).sort(
+      (a, b) => b.length - a.length,
+    );
 
     for (const voice of sortedVoiceKeys) {
       if (transcript.includes(voice)) {

@@ -2,7 +2,8 @@ import React from "react";
 import VoiceNumberSelector from "./VoiceNumberSelector";
 
 interface NumberSelectorProps {
-  onClick: (value: string) => void;
+  voiceEnabled: boolean;
+  onToggleVoice: () => void;
 }
 
 export default class NumberSelector extends React.Component<NumberSelectorProps> {
@@ -23,7 +24,17 @@ export default class NumberSelector extends React.Component<NumberSelectorProps>
     }
     return (
       <div className="number-selector">
-        <VoiceNumberSelector onClick={this.props.onClick} />
+        <div className="voice-toggle-container">
+          <button
+            className={`voice-toggle-button ${this.props.voiceEnabled ? "enabled" : "disabled"}`}
+            onClick={this.props.onToggleVoice}
+          >
+            {this.props.voiceEnabled ? "🎤 音声ON" : "🔇 音声OFF"}
+          </button>
+        </div>
+        {this.props.voiceEnabled && (
+          <VoiceNumberSelector onClick={this.props.onClick} />
+        )}
         {numberTables.map((values, index) => {
           return (
             <div
