@@ -7,7 +7,9 @@
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	"features": {
-		"ghcr.io/devcontainers/features/github-cli:1.1.0": {}
+		"ghcr.io/devcontainers/features/github-cli:1.1.0": {},
+		"ghcr.io/devcontainers/features/node:1": {},
+		"ghcr.io/anthropics/devcontainer-features/claude-code:1": {}
 	},
 	"forwardPorts": [3000, 9323],
 	"portsAttributes": {
@@ -17,7 +19,18 @@
 		"9323": {
 			"label": "playwright inspector"
 		}
-	}
+	},
+
+
+	"remoteEnv": {
+		"ANTHROPIC_AUTH_TOKEN":"ollama",
+		//"ANTHROPIC_BASE_URL":"http://$WINDOWS_HOST:11434", //set .env for initializeCommand
+		"ANTHROPIC_MODEL":"gpt-oss"
+	},
+
+
+	"initializeCommand": "ip route | grep default | awk '{print \"ANTHROPIC_BASE_URL=http://\" $3 \":11434\"}' | head -1 > ${localWorkspaceFolder}/.devcontainer/.env",
+	"runArgs": [ "--env-file", "${localWorkspaceFolder}/.devcontainer/.env"]
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
