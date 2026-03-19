@@ -1,4 +1,5 @@
 import React from "react";
+import VoiceNumberSelector from "./VoiceNumberSelector";
 
 interface NumberSelectorProps {
   onClick: (value: string) => void;
@@ -22,6 +23,7 @@ export default class NumberSelector extends React.Component<NumberSelectorProps>
     }
     return (
       <div className="number-selector">
+        <VoiceNumberSelector onClick={this.props.onClick} />
         {numberTables.map((values, index) => {
           return (
             <div
