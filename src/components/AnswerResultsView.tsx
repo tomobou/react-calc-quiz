@@ -88,7 +88,7 @@ export default class AnswerResultsView extends React.Component<
         onClick={() => this.hiddenResult()}
       >
         <div>しゅうりょうー</div>
-        <div>{(totalLapTime / 1000).toFixed(2)}秒でできたよ。</div>
+        <div>{(totalLapTime / 1000).toFixed(3)}秒でできたよ。</div>
         <img src={`/img/grade${grade}.png`} alt="grade" />
         <table className="answer-results-view">
           <thead>
