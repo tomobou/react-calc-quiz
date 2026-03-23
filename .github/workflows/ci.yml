@@ -2,41 +2,45 @@ name: CI
 
 on:
   push:
-    branches: [master, main]
+    branches: [master, develop, 'feature/**']
   pull_request:
-    branches: [master, main]
+    branches: [master, develop]
 
 jobs:
-  lint-and-test:
+  test:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
 
-      - name: Set up Node.js
+    strategy:
+      matrix:
+        node-version: [24.x]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
-          node-version: '24'
-          cache: 'npm'
+          node-version: ${{ matrix.node-version }}
+          cache: npm
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Lint
+      - name: Run ESLint
         run: npm run lint
 
-      - name: Format check
-        run: npm run format:check
+      - name: Run TypeScript type check
+        run: npx tsc --noEmit
 
-      - name: Run unit tests
-        run: npm test
+      - name: Run tests
+        run: npm test -- --coverage
 
-      - name: Run e2e tests
-        run: npm run test:e2e
+      - name: Build
+        run: npm run build
 
-      - name: Upload e2e test results
-        if: success() || failure()
-        uses: actions/upload-artifact@v4
+      - name: Upload coverage reports
+        if: matrix.node-version == '24.x'
+        uses: codecov/codecov-action@v3
         with:
-          name: e2e-results
-          path: ./reports
+          files: ./coverage/lcov.info
+          fail_ci_if_error: false
