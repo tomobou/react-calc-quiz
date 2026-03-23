@@ -75,7 +75,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
   5. ローカルテスト・lint                                                                                     
   npm test                                                                                                    
   npm run lint                                                                                                
-    - すべてパスすることを確認。失敗した場合はステップ 2 に戻り、修正して再コミット。                         
+    - すべてパスすることを確認。失敗した場合はステップ 2 に戻り、修正して再コミット。   
+  5. TODO.mdの更新
+    - 実施したタスクについて実施済みとしてチェックしてコミットする。                      
   6. リモートへプッシュ                                                                                       
   git push -u origin feature/〈説明〉                                                                         
     - -u で追跡設定を行い、以降は git push だけで更新可能。                                                   

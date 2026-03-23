@@ -30,19 +30,10 @@
 
 
 	"initializeCommand": "ip route | grep default | awk '{print \"ANTHROPIC_BASE_URL=http://\" $3 \":11434\"}' | head -1 > ${localWorkspaceFolder}/.devcontainer/.env",
-	"runArgs": [ "--env-file", "${localWorkspaceFolder}/.devcontainer/.env"]
+	"runArgs": [ "--env-file", "${localWorkspaceFolder}/.devcontainer/.env"],
 
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
-
-	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "yarn install",
-
-	// Use 'postStartCommand' to run commands after the container starts.
-
-	
-	// Configure tool-specific properties.
-	
-	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-	// "remoteUser": "root"
+	"mounts": [
+		"source=${localEnv:HOME}/.claude/skills,target=/home/node/.claude/skills,type=bind,readonly"
+	],
+	"remoteUser": "node"
 }
