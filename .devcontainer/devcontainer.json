@@ -35,7 +35,8 @@
 
 
 	"mounts": [
-		"source=${localEnv:HOME}/.claude/skills,target=/home/node/.claude/skills,type=bind,readonly"
+		"source=${localEnv:HOME}/.claude/skills,target=/home/node/.claude/skills,type=bind,readonly",
+		"source=${localEnv:HOME}/.config/gh,target=/home/node/.config/gh,type=bind,readonly"
 	],
 	"remoteUser": "node"
 }
