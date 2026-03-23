@@ -5,7 +5,7 @@
   - 現在 `Questioner` では `this.props.wrongCount` を参照しているが、`QuestionerProps` に定義がない。これを追加し、型チェックと実装を合わせる。
 
 ## 2. クラスコンポーネントのフック化
-- [x] **Questioner, AnswerResultsView, QuizSelector** を関数コンポーネントへ変換
+- [ ] **Questioner, AnswerResultsView, QuizSelector** を関数コンポーネントへ変換
   - `React.Component` を `React.FC` で置き換え、`useState`, `useEffect` で状態管理。
   - ライフサイクルメソッドの代替を実装。
 
@@ -16,11 +16,11 @@
   - 正しい結果行が表示されるか、クリックで非表示になるかを確認。
 
 ## 4. ESLint/Prettier ルールの強化
-- [x] **プロジェクト全体に `no-undef`、`no-unused-vars`** などのルールを追加
+- [ ] **プロジェクト全体に `no-undef`、`no-unused-vars`** などのルールを追加
   - ルールを `.eslintrc.js` へ追加し、CI でチェック。
 
 ## 5. CI/CD の設定
-- [x] **GitHub Actions ワークフローを追加** (`.github/workflows/ci.yml`)
+- [ ] **GitHub Actions ワークフローを追加** (`.github/workflows/ci.yml`)
   - npm install → lint → test → build のステップを実行。
 
 ## 6. ドキュメントの充実
@@ -33,7 +33,7 @@
 - [x] **重複コードの抽象化**（例：`Quiz` データ取得ロジックを共通 Hook にまとめる）
 
 ## 8. ユーザー体験の改善
-- [x] **音声入力 UI のアクセシビリティ改善**
+- [ ] **音声入力 UI のアクセシビリティ改善**
   - ボタンに `aria-pressed` を追加、キーボード操作をサポート。
 - [x] **ラウンドタイム表示のフォーマット統一**（ミリ秒を小数点以下3桁で固定）
 
