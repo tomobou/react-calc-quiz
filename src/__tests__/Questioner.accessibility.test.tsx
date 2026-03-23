@@ -37,6 +37,18 @@ describe('Questioner accessibility', () => {
     expect(button).toHaveAttribute('aria-pressed', 'false');
   });
 
+  test('button aria-pressed true when voiceEnabled true and wrongCount 0', () => {
+    renderComponent(true, 0);
+    const button = screen.getByRole('button');
+    expect(button).toHaveAttribute('aria-pressed', 'true');
+  });
+
+  test('button aria-pressed false when voiceEnabled false and wrongCount 0', () => {
+    renderComponent(false, 0);
+    const button = screen.getByRole('button');
+    expect(button).toHaveAttribute('aria-pressed', 'false');
+  });
+
   test('button present even when wrongCount is 0', () => {
     renderComponent(true, 0);
     const button = screen.getByRole('button');
