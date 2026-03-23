@@ -3,6 +3,7 @@ import VoiceNumberSelector from "./VoiceNumberSelector";
 
 interface NumberSelectorProps {
   voiceEnabled: boolean;
+  onClick: (value: string) => void;
   onToggleVoice: () => void;
 }
 

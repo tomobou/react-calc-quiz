@@ -7,7 +7,7 @@ interface AnswerResultsViewProps {
 interface AnswerResultsViewStates {
   active: string;
 }
-function getGrade(results: AnswerResult[]): string {
+export function getGrade(results: AnswerResult[]): string {
   const wrongRate =
     (results.reduce(
       (sum, result) => (sum += result.wrongCount > 0 ? 1 : 0),
@@ -31,7 +31,7 @@ function getGrade(results: AnswerResult[]): string {
 
   const avgLapTime =
     results.reduce(
-      (sum, result) => (sum += result.endTime!! - result.startTime!!),
+      (sum, result) => (sum += result.endTime! - result.startTime!),
       0,
     ) / results.length;
   let lapTimeGrade = 5;

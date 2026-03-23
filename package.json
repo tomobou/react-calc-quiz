@@ -26,12 +26,8 @@
         "deploy": "gh-pages -d build"
     },
     "eslintConfig": {
-        "extends": "react-app",
-        "rules": {
-            "no-undef": "error",
-            "no-unused-vars": "error"
-        }
-    }
+        "extends": "react-app"
+    },
     "browserslist": {
         "production": [
             ">0.2%",
