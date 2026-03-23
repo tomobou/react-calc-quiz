@@ -68,8 +68,13 @@ Git を使った開発フロー（箇条書き）
   add: voice toggle per question
 
   Co-Authored-By: Claude <noreply@anthropic.com>
+<<<<<<< HEAD
   EOF
   )"
+=======
+EOF
+)"
+>>>>>>> 3503a09 (add: update CLAUDE.md with PR creation instructions)
     - メッセージは「add / fix / update / refactor」などアクションを先頭にし、変更内容の簡潔な要約を記載。
     - 必要に応じて Co‑Authored‑By を追加。
   5. ローカルテスト・lint
@@ -96,9 +101,16 @@ Git を使った開発フロー（箇条書き）
   - マージ前にレビューを必ず受け、承認を得ること。
 
 ## PR 作成ルール
+## PR 作成ルール
+- PR 作成は必須です。変更を加えたブランチを GitHub にプッシュ後、PR を作成してください。
+- PR テンプレート（`PULL_REQUEST_TEMPLATE.md`）に従い、以下の必須項目を記入してください。
+  - Summary
+  - Implementation Details
+  - Test Plan
+  - Notes
+- テンプレートに沿わない PR はレビューで拒否します。
 
 ## ブランチ作成・PR 自動化手順
-
 以下のスクリプトとフローを利用すると、ブランチ作成から PR 作成までを 1 つのコマンドで実行できます。
 
 1. **GitHub CLI の認証**
@@ -119,6 +131,27 @@ Git を使った開発フロー（箇条書き）
    `feature/**` で始まるブランチが push されると、`auto-pr.yml` が自動で PR を作成します。
 
 これにより、手動で `git push` → `gh pr create` を行う手間が省けます。
+以下のスクリプトとフローを利用すると、ブランチ作成から PR 作成までを 1 つのコマンドで実行できます。
+
+1. **GitHub CLI の認証**
+   ```bash
+   gh auth login
+   ```
+2. **スクリプトの実行**（例: 新機能 `add-foo`）
+   ```bash
+   ./scripts/create_and_pr.sh feature/add-foo "add: new feature foo"
+   ```
+   このスクリプトは
+   * `master` の最新を取得
+   * 新ブランチを作成（既存ならスキップ）
+   * 変更を全てステージ＆コミット
+   * リモートへ push
+   * PR を自動作成（`gh pr create --fill`）
+3. **GitHub Actions**（任意）
+   `feature/**` で始まるブランチが push されると、`auto-pr.yml` が自動で PR を作成します。
+
+<<<<<<< HEAD
+これにより、手動で `git push` → `gh pr create` を行う手間が省けます。
 - PR 作成は必須です。変更を加えたブランチを GitHub にプッシュ後、PR を作成してください。
 - PR テンプレート（`PULL_REQUEST_TEMPLATE.md`）に従い、以下の必須項目を記入してください。
   - Summary
@@ -126,3 +159,6 @@ Git を使った開発フロー（箇条書き）
   - Test Plan
   - Notes
 - テンプレートに沿わない PR はレビューで拒否します。
+=======
+これにより、手動で `git push` → `gh pr create` を行う手間が省けます。
+>>>>>>> 3503a09 (add: update CLAUDE.md with PR creation instructions)
