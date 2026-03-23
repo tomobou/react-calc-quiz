@@ -17,7 +17,7 @@ describe('Questioner accessibility', () => {
         setQuizs={mockSetQuizs}
         voiceEnabled={voiceEnabled}
         onToggleVoice={mockToggle}
-        wrongCount={0}
+        wrongCount={1}
       />
     );
   };
