@@ -113,10 +113,8 @@ EOF
 ## ブランチ作成・PR 自動化手順
 以下のスクリプトとフローを利用すると、ブランチ作成から PR 作成までを 1 つのコマンドで実行できます。
 
-1. **GitHub CLI の認証**
-   ```bash
-   gh auth login
-   ```
+1. **GitHub CLI の認証は不要**
+  - 認証情報はmountして取得済みのため。
 2. **スクリプトの実行**（例: 新機能 `add-foo`）
    ```bash
    ./scripts/create_and_pr.sh feature/add-foo "add: new feature foo"
