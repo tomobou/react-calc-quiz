@@ -31,6 +31,8 @@
 
 	"initializeCommand": "ip route | grep default | awk '{print \"ANTHROPIC_BASE_URL=http://\" $3 \":11434\"}' | head -1 > ${localWorkspaceFolder}/.devcontainer/.env",
 	"runArgs": [ "--env-file", "${localWorkspaceFolder}/.devcontainer/.env"],
+ 	"postCreateCommand": "./.devcontainer/postCreateCommand.sh",
+
 
 	"mounts": [
 		"source=${localEnv:HOME}/.claude/skills,target=/home/node/.claude/skills,type=bind,readonly"
