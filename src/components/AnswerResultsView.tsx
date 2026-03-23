@@ -7,7 +7,7 @@ interface AnswerResultsViewProps {
 interface AnswerResultsViewStates {
   active: string;
 }
-function getGrade(results: AnswerResult[]): string {
+export function getGrade(results: AnswerResult[]): string {
   const wrongRate =
     (results.reduce(
       (sum, result) => (sum += result.wrongCount > 0 ? 1 : 0),
