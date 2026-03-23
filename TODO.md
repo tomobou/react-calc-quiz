@@ -1,41 +1,41 @@
 # TODO.md
 
 ## 1. コンポーネントの型定義と修正
-- [ ] **Questioner コンポーネントの props に `wrongCount` を追加**
+- [x] **Questioner コンポーネントの props に `wrongCount` を追加**
   - 現在 `Questioner` では `this.props.wrongCount` を参照しているが、`QuestionerProps` に定義がない。これを追加し、型チェックと実装を合わせる。
 
 ## 2. クラスコンポーネントのフック化
-- [ ] **Questioner, AnswerResultsView, QuizSelector** を関数コンポーネントへ変換
+- [x] **Questioner, AnswerResultsView, QuizSelector** を関数コンポーネントへ変換
   - `React.Component` を `React.FC` で置き換え、`useState`, `useEffect` で状態管理。
   - ライフサイクルメソッドの代替を実装。
 
 ## 3. ユニットテストの拡張
-- [ ] **AnswerResultsView の `getGrade` 関数をテスト**
+- [x] **AnswerResultsView の `getGrade` 関数をテスト**
   - さまざまな入力に対して正しいグレードが返るか検証。
-- [ ] **AnswerResultsView のレンダリングテスト**
+- [x] **AnswerResultsView のレンダリングテスト**
   - 正しい結果行が表示されるか、クリックで非表示になるかを確認。
 
 ## 4. ESLint/Prettier ルールの強化
-- [ ] **プロジェクト全体に `no-undef`、`no-unused-vars`** などのルールを追加
+- [x] **プロジェクト全体に `no-undef`、`no-unused-vars`** などのルールを追加
   - ルールを `.eslintrc.js` へ追加し、CI でチェック。
 
 ## 5. CI/CD の設定
-- [ ] **GitHub Actions ワークフローを追加** (`.github/workflows/ci.yml`)
+- [x] **GitHub Actions ワークフローを追加** (`.github/workflows/ci.yml`)
   - npm install → lint → test → build のステップを実行。
 
 ## 6. ドキュメントの充実
-- [ ] **README.md を更新**
+- [x] **README.md を更新**
   - アプリの概要、セットアップ手順、デプロイ手順、テスト実行方法を明記。
-- [ ] **.devcontainer** 設定を確認し、必要に応じて `Dockerfile` へ Node 18 など最新化。
+- [x] **.devcontainer** 設定を確認し、必要に応じて `Dockerfile` へ Node 18 など最新化。
 
 ## 7. コード品質の向上
-- [ ] **console.log の削除**（例：`AnswerResultsView.tsx` のコメントアウトされたデバッグログ）
-- [ ] **重複コードの抽象化**（例：`Quiz` データ取得ロジックを共通 Hook にまとめる）
+- [x] **console.log の削除**（例：`AnswerResultsView.tsx` のコメントアウトされたデバッグログ）
+- [x] **重複コードの抽象化**（例：`Quiz` データ取得ロジックを共通 Hook にまとめる）
 
 ## 8. ユーザー体験の改善
-- [ ] **音声入力 UI のアクセシビリティ改善**
+- [x] **音声入力 UI のアクセシビリティ改善**
   - ボタンに `aria-pressed` を追加、キーボード操作をサポート。
-- [ ] **ラウンドタイム表示のフォーマット統一**（ミリ秒を小数点以下3桁で固定）
+- [x] **ラウンドタイム表示のフォーマット統一**（ミリ秒を小数点以下3桁で固定）
 
 ---
 > **備考**
