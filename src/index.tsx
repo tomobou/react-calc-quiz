@@ -92,6 +92,7 @@ class Game extends React.Component<GameProps, GameStates> {
           wrongCount={this.state.wrongCount}
           voiceEnabled={this.state.voiceEnabled}
           onToggleVoice={this.toggleVoiceEnabled}
+          setQuizs={(quizs) => this.handleStart(quizs)}
         />
         <NumberSelector
           onClick={(value: string) => this.handleSelect(value)}
