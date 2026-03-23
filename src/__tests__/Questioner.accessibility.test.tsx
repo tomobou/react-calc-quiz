@@ -8,7 +8,7 @@ describe('Questioner accessibility', () => {
   const mockSetQuizs = jest.fn();
   const mockToggle = jest.fn();
 
-  const renderComponent = (voiceEnabled: boolean) => {
+  const renderComponent = (voiceEnabled: boolean, wrongCount: number) => {
     render(
       <Questioner
         quizs={[mockQuiz]}
@@ -17,24 +17,29 @@ describe('Questioner accessibility', () => {
         setQuizs={mockSetQuizs}
         voiceEnabled={voiceEnabled}
         onToggleVoice={mockToggle}
-        wrongCount={1}
+        wrongCount={wrongCount}
       />
     );
   };
 
   test('button has aria-pressed reflecting voiceEnabled', () => {
-    renderComponent(true);
+    renderComponent(true, 1);
     const button = screen.getByRole('button');
     expect(button).toHaveAttribute('aria-pressed', 'true');
-
-    // toggle should work
     fireEvent.click(button);
     expect(mockToggle).toHaveBeenCalled();
   });
 
   test('button aria-pressed false when voiceEnabled false', () => {
-    renderComponent(false);
+    renderComponent(false, 1);
     const button = screen.getByRole('button');
+    expect(button).toBeInTheDocument();
     expect(button).toHaveAttribute('aria-pressed', 'false');
+  });
+
+  test('button present even when wrongCount is 0', () => {
+    renderComponent(true, 0);
+    const button = screen.getByRole('button');
+    expect(button).toBeInTheDocument();
   });
 });
