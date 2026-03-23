@@ -29,6 +29,7 @@ export default class Questioner extends React.Component<QuestionerProps> {
               </div><div className="voice-toggle-container">
                   <button
                     className={this.props.voiceEnabled ? "voice-enabled" : "voice-disabled"}
+                    aria-pressed={this.props.voiceEnabled}
                     onClick={this.props.onToggleVoice}>
                     {this.props.voiceEnabled ? "音声入力 ON" : "音声入力 OFF"}</button>
                 </div></>
