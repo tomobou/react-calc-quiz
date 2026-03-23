@@ -1,7 +1,7 @@
 # TODO.md
 
 ## 1. コンポーネントの型定義と修正
-- [ ] **Questioner コンポーネントの props に `wrongCount` を追加**
+- [x] **Questioner コンポーネントの props に `wrongCount` を追加**
   - 現在 `Questioner` では `this.props.wrongCount` を参照しているが、`QuestionerProps` に定義がない。これを追加し、型チェックと実装を合わせる。
 
 ## 2. クラスコンポーネントのフック化
@@ -20,7 +20,7 @@
   - ルールを `.eslintrc.js` へ追加し、CI でチェック。
 
 ## 5. CI/CD の設定
-- [ ] **GitHub Actions ワークフローを追加** (`.github/workflows/ci.yml`)
+- [x] **GitHub Actions ワークフローを追加** (`.github/workflows/ci.yml`)
   - npm install → lint → test → build のステップを実行。
 
 ## 6. ドキュメントの充実
