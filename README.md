@@ -1,32 +1,46 @@
-## 概要
+# React Calc Quiz
 
-計算問題練習用に作成。
+## Overview
+This repository contains a simple React application that helps users practice basic arithmetic questions.
 
-答えが０～１０までの足し算をできるようにしています。
+## Prerequisites
+- Node.js **v16.13.0** (or newer)
+- npm **8.1.4** (comes with Node)
 
-## 開発
+## Setup
+```bash
+# Install dependencies
+npm install
 
-### node version
-
+# Run development server
+npm start
 ```
-> node -v
-v16.13.0
 
-> npm -v 
-8.1.4
+The app will be available at `http://127.0.0.1:3000`.
+
+## Building for production
+```bash
+npm run build
+```
+The build output will be in the `build/` directory.
+
+## Running tests
+```bash
+# Unit tests
+npm test
+
+# Playwright E2E tests
+npm run test:e2e
 ```
 
-## 動作
-github pagesで動作させるようにしています。
+## Deploying to GitHub Pages
+```bash
+npm run predeploy   # Builds the site for GitHub Pages
+npm run deploy      # Pushes to the gh-pages branch
+```
 
-- https://tomobou.github.io/react-calc-quiz/
+## Contributing
+Please create a branch, commit changes, and submit a pull request following the guidelines in the `CLAUDE.md` file.
 
-## 参考
-
-github pages への公開の仕方などを参考にさせていただきました。
-- https://qiita.com/EisKern/items/15dcf7864fa49df8f247
-
-## image
-
-いらすとや より、花型の評価印5点を使用させていただいています。
-https://www.irasutoya.com/2014/04/blog-post_4947.html
+## License
+MIT
