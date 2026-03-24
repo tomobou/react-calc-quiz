@@ -5,7 +5,7 @@
   - 現在 `Questioner` では `this.props.wrongCount` を参照しているが、`QuestionerProps` に定義がない。これを追加し、型チェックと実装を合わせる。
 
 ## 2. クラスコンポーネントのフック化
-- [ ] **Questioner, AnswerResultsView, QuizSelector** を関数コンポーネントへ変換
+- [x] **Questioner, AnswerResultsView, QuizSelector** を関数コンポーネントへ変換
   - `React.Component` を `React.FC` で置き換え、`useState`, `useEffect` で状態管理。
   - ライフサイクルメソッドの代替を実装。
 
