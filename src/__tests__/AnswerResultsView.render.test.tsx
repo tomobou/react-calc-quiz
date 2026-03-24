@@ -18,10 +18,7 @@ const createResult = (
 });
 
 test("renders answer results and hides on click", () => {
-  const results = [
-    createResult(0, 0, 500),
-    createResult(1, 600, 1500),
-  ];
+  const results = [createResult(0, 0, 500), createResult(1, 600, 1500)];
 
   render(<AnswerResultsView results={results} />);
 
