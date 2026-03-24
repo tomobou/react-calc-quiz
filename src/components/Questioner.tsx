@@ -23,17 +23,22 @@ export default class Questioner extends React.Component<QuestionerProps> {
           </h5>
           <div className="question-content">
             {this.props.currentQuiz && this.props.currentQuiz.q}
-            {this.props.wrongCount > 0 && <div className="shake">
+            {this.props.wrongCount > 0 && (
+              <div className="shake">
                 {"".padStart(this.props.wrongCount, "×")}
-              </div>}
+              </div>
+            )}
             <div className="voice-toggle-container">
-                  <button
-                    className={this.props.voiceEnabled ? "voice-enabled" : "voice-disabled"}
-                    aria-pressed={this.props.voiceEnabled}
-                    onClick={this.props.onToggleVoice}>
-                    {this.props.voiceEnabled ? "音声入力 ON" : "音声入力 OFF"}</button>
-                </div>
-
+              <button
+                className={
+                  this.props.voiceEnabled ? "voice-enabled" : "voice-disabled"
+                }
+                aria-pressed={this.props.voiceEnabled}
+                onClick={this.props.onToggleVoice}
+              >
+                {this.props.voiceEnabled ? "音声入力 ON" : "音声入力 OFF"}
+              </button>
+            </div>
           </div>
         </div>
       );

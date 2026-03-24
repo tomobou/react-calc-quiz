@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# Run lint fix, tests, and format check
+npm run lint:fix
+if [ $? -ne 0 ]; then
+  echo "Lint failed. Aborting commit."
+  exit 1
+fi
+
+npm test
+if [ $? -ne 0 ]; then
+  echo "Tests failed. Aborting commit."
+  exit 1
+fi
+
+npm run format:check
+if [ $? -ne 0 ]; then
+  echo "Code is not formatted. Aborting commit."
+  exit 1
+fi
+
+# If all checks pass, allow commit
+exit 0

@@ -51,47 +51,105 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - ビルド後は `npm run serve` でローカルでプレビュー可能。
 
 ## 開発タスクのルール
- Git を使った開発フロー（箇条書き）                                                                          
-                                                                                                              
-  1. ローカルブランチ作成  
-  git checkout master                                                                                       
-  git pull                                                                                   
-  git checkout -b feature/〈説明〉                                                                            
+Git を使った開発フロー（箇条書き）
+
+  1. ローカルブランチ作成
+  git checkout master
+  git pull
+  git checkout -b feature/〈説明〉
     - 既存ブランチの master から分岐させるため、masterの最新を取得してから作業を行う。ブランチ名は機能・修正内容を簡潔に示す（例: feature/add-voice-toggle）。
-  2. コード変更                                                                                               
-    - 必要なファイルを編集・追加。変更後に npm run lint:fix を実行し、コードを整形。                          
-  3. 変更をステージ                                                                                           
-  git add <変更ファイル>   # 必要ファイルを個別に追加                                                         
-    - git add . は避け、意図しないファイルがステージされないようにする。                                      
-  4. コミット                                                                                                 
-  git commit -m "$(cat <<'EOF'                                                                                
-  add: voice toggle per question                                                                              
-                                                                                                              
-  Co-Authored-By: Claude <noreply@anthropic.com>                                                     
-  EOF                                                                                                         
-  )"                                                                                                          
-    - メッセージは「add / fix / update / refactor」などアクションを先頭にし、変更内容の簡潔な要約を記載。     
-    - 必要に応じて Co‑Authored‑By を追加。                                                                    
-  5. ローカルテスト・lint                                                                                     
-  npm test                                                                                                    
-  npm run lint                                                                                                
-    - すべてパスすることを確認。失敗した場合はステップ 2 に戻り、修正して再コミット。   
+  2. コード変更
+    - 必要なファイルを編集・追加。変更後に npm run lint:fix を実行し、コードを整形。
+  3. 変更をステージ
+  git add <変更ファイル>   # 必要ファイルを個別に追加
+    - git add . は避け、意図しないファイルがステージされないようにする。
+  4. コミット
+  git commit -m "$(cat <<'EOF'
+  add: voice toggle per question
+
+  Co-Authored-By: Claude <noreply@anthropic.com>
+  EOF
+  )"
+  - メッセージは「add / fix / update / refactor」などアクションを先頭にし、変更内容の簡潔な要約を記載。
+  - 必要に応じて Co‑Authored‑By を追加。
+    - メッセージは「add / fix / update / refactor」などアクションを先頭にし、変更内容の簡潔な要約を記載。
+    - 必要に応じて Co‑Authored‑By を追加。
+  5. ローカルテスト・lint
+  npm test
+  npm run lint
+    - すべてパスすることを確認。失敗した場合はステップ 2 に戻り、修正して再コミット。
   5. TODO.mdの更新
-    - 実施したタスクについて実施済みとしてチェックしてコミットする。                      
-  6. リモートへプッシュ                                                                                       
-  git push -u origin feature/〈説明〉                                                                         
-    - -u で追跡設定を行い、以降は git push だけで更新可能。                                                   
-  7. Pull Request（PR）作成                                                                                   
-    - GitHub の UI か gh CLI で PR を作成。タイトルは 70                                                      
-  文字以内で要約し、本文で実装内容・テスト結果・注意点を記述。                                                
-    - PR の本文に Co‑Authored‑By を入れ忘れないようにする。                                                   
-  8. レビュー                                                                                                 
-    - 同僚にレビューを依頼し、コメントに対応。必要ならコミットを追加で作成。                                  
-  9. マージ                                                                                                   
-    - マージは人が行うため、マージ作業は実行しない。                                                                                                                                                               
-                                                                                                              
-  注意点                                                                                                      
-  - 変更前に必ず npm run lint:fix で整形し、テスト (npm test) を通過させる。                                  
-  - コミットメッセージは明確に書く。                                                                          
-  - PR では「概要」「実装詳細」「テスト結果」を本文に記載。                                                 
-  - マージ前にレビューを必ず受け、承認を得ること。       
+    - 実施したタスクについて実施済みとしてチェックしてコミットする。
+  6. リモートへプッシュ
+  git push -u origin feature/〈説明〉
+    - -u で追跡設定を行い、以降は git push だけで更新可能。
+  7. Pull Request（PR）作成
+    - GitHub の UI か gh CLI で PR を作成。タイトルは 70文字以内で要約し、本文で実装内容・テスト結果・注意点を記述。
+    - PR の本文に Co‑Authored‑By を入れ忘れないようにする。
+  8. レビュー
+    - 同僚にレビューを依頼し、コメントに対応。必要ならコミットを追加で作成。
+  9. マージ
+    - マージは人が行うため、マージ作業は実行しない。
+
+  注意点
+  - 変更前に必ず npm run lint:fix で整形し、テスト (npm test) を通過させる。
+  - コミットメッセージは明確に書く。
+  - PR では「概要」「実装詳細」「テスト結果」を本文に記載。
+  - マージ前にレビューを必ず受け、承認を得ること。
+
+## PR 作成ルール
+## PR 作成ルール
+- PR 作成は必須です。変更を加えたブランチを GitHub にプッシュ後、PR を作成してください。
+- PR テンプレート（`PULL_REQUEST_TEMPLATE.md`）に従い、以下の必須項目を記入してください。
+  - Summary
+  - Implementation Details
+  - Test Plan
+  - Notes
+- テンプレートに沿わない PR はレビューで拒否します。
+
+## ブランチ作成・PR 自動化手順
+以下のスクリプトとフローを利用すると、ブランチ作成から PR 作成までを 1 つのコマンドで実行できます。
+
+1. **GitHub CLI の認証は不要**
+  - 認証情報はmountして取得済みのため。
+2. **スクリプトの実行**（例: 新機能 `add-foo`）
+   ```bash
+   ./scripts/create_and_pr.sh feature/add-foo "add: new feature foo"
+   ```
+   このスクリプトは
+   * `master` の最新を取得
+   * 新ブランチを作成（既存ならスキップ）
+   * 変更を全てステージ＆コミット
+   * リモートへ push
+   * PR を自動作成（`gh pr create --fill`）
+3. **GitHub Actions**（任意）
+   `feature/**` で始まるブランチが push されると、`auto-pr.yml` が自動で PR を作成します。
+
+これにより、手動で `git push` → `gh pr create` を行う手間が省けます。
+以下のスクリプトとフローを利用すると、ブランチ作成から PR 作成までを 1 つのコマンドで実行できます。
+
+1. **GitHub CLI の認証**
+   ```bash
+   gh auth login
+   ```
+2. **スクリプトの実行**（例: 新機能 `add-foo`）
+   ```bash
+   ./scripts/create_and_pr.sh feature/add-foo "add: new feature foo"
+   ```
+   このスクリプトは
+   * `master` の最新を取得
+   * 新ブランチを作成（既存ならスキップ）
+   * 変更を全てステージ＆コミット
+   * リモートへ push
+   * PR を自動作成（`gh pr create --fill`）
+3. **GitHub Actions**（任意）
+   `feature/**` で始まるブランチが push されると、`auto-pr.yml` が自動で PR を作成します。
+
+これにより、手動で `git push` → `gh pr create` を行う手間が省けます。
+- PR 作成は必須です。変更を加えたブランチを GitHub にプッシュ後、PR を作成してください。
+- PR テンプレート（`PULL_REQUEST_TEMPLATE.md`）に従い、以下の必須項目を記入してください。
+  - Summary
+  - Implementation Details
+  - Test Plan
+  - Notes
+- テンプレートに沿わない PR はレビューで拒否します。

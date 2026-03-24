@@ -23,7 +23,8 @@
         "format": "prettier --write src/**/*.{js,jsx,ts,tsx}",
         "format:check": "prettier --check src/**/*.{js,jsx,ts,tsx}",
         "predeploy": "tsc --noEmit && vite build --mode github",
-        "deploy": "gh-pages -d build"
+        "deploy": "gh-pages -d build",
+        "prepare": "husky install"
     },
     "eslintConfig": {
         "extends": "react-app"
@@ -42,6 +43,7 @@
     },
     "homepage": "https://tomobou.github.io/react-calc-quiz/",
     "devDependencies": {
+    "husky": "^9.1.0",
         "@testing-library/jest-dom": "^6.9.1",
         "@testing-library/react": "^16.3.2",
         "@typescript-eslint/eslint-plugin": "^8.57.0",

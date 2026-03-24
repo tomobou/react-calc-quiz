@@ -132,8 +132,8 @@ export default class VoiceNumberSelector extends React.Component<
         }
       };
 
-      this.recognition.onerror = (event: any) => {
-        console.error("Speech recognition error", event.error);
+      this.recognition.onerror = (_event: any) => {
+        /* Speech recognition error: */
         if (this.state.isListening) {
           // エラーが発生してもリスニング状態を保持して再開
           this.recognition.start();
@@ -143,7 +143,7 @@ export default class VoiceNumberSelector extends React.Component<
   }
 
   handleVoiceResult = (transcript: string) => {
-    console.log("Voice recognition result:", transcript);
+    /* Voice recognition result: */
 
     // 認識結果から数字を抽出 - より長いキーワードから優先的にマッチング
     const sortedVoiceKeys = Object.keys(voiceToNumberMap).sort(
@@ -153,14 +153,14 @@ export default class VoiceNumberSelector extends React.Component<
     for (const voice of sortedVoiceKeys) {
       if (transcript.includes(voice)) {
         const number = voiceToNumberMap[voice];
-        console.log(`Matched voice "${voice}" to number "${number}"`);
+        /* Matched voice to number */
         this.props.onClick(number);
         return;
       }
     }
 
     // マッチしなかった場合
-    console.warn(`Could not convert voice to number: ${transcript}`);
+    /* Could not convert voice to number: */
   };
 
   toggleVoiceInput = () => {
