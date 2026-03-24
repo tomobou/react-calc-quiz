@@ -7,7 +7,12 @@ interface QuizButtonProps {
   onClick: () => void;
 }
 
-export default function QuizButton({ name, remarks, color, onClick }: QuizButtonProps) {
+export default function QuizButton({
+  name,
+  remarks,
+  color,
+  onClick,
+}: QuizButtonProps) {
   return (
     <div
       className="question-select-item"

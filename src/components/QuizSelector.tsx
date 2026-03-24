@@ -1,4 +1,5 @@
 import React from "react";
+import Quiz from "../domain/Quiz";
 import QuizButton from "./QuizButton";
 import {
   QuizBook,
@@ -8,7 +9,7 @@ import {
   hikizan4,
 } from "../domain/QuizBook";
 
-interface QuizButton {
+interface QuizButtonInfo {
   name: string;
   remarks?: string;
   color: string;
@@ -21,7 +22,7 @@ interface QuizSelectorProps {
 }
 
 export default function QuizSelector({ setQuizs }: QuizSelectorProps) {
-  const quizButtons: QuizButton[] = [
+  const quizButtons: QuizButtonInfo[] = [
     {
       name: "れんしゅう",
       remarks: "３もん",
@@ -86,7 +87,9 @@ export default function QuizSelector({ setQuizs }: QuizSelectorProps) {
             name={quizButton.name}
             remarks={quizButton.remarks}
             color={quizButton.color}
-            onClick={() => setQuizs(quizButton.quizBook.quizs(quizButton.quizCount))}
+            onClick={() =>
+              setQuizs(quizButton.quizBook.quizs(quizButton.quizCount))
+            }
           />
         ))}
       </div>
