@@ -1,5 +1,5 @@
 import React from "react";
-import Quiz from "../domain/Quiz";
+import QuizButton from "./QuizButton";
 import {
   QuizBook,
   tasizan1,
@@ -81,19 +81,13 @@ export default function QuizSelector({ setQuizs }: QuizSelectorProps) {
       <h5>もんだいをえらんでね！</h5>
       <div className="question-select">
         {quizButtons.map((quizButton, index) => (
-          <div
+          <QuizButton
             key={"question-select-item-" + index}
-            className="question-select-item"
-            style={{ backgroundColor: quizButton.color }}
-            onClick={() =>
-              setQuizs(quizButton.quizBook.quizs(quizButton.quizCount))
-            }
-          >
-            <div className="question-select-item-name">{quizButton.name}</div>
-            <div className="question-select-item-remarks">
-              {quizButton.remarks}
-            </div>
-          </div>
+            name={quizButton.name}
+            remarks={quizButton.remarks}
+            color={quizButton.color}
+            onClick={() => setQuizs(quizButton.quizBook.quizs(quizButton.quizCount))}
+          />
         ))}
       </div>
     </div>
