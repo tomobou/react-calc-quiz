@@ -68,13 +68,10 @@ Git を使った開発フロー（箇条書き）
   add: voice toggle per question
 
   Co-Authored-By: Claude <noreply@anthropic.com>
-<<<<<<< HEAD
   EOF
   )"
-=======
-EOF
-)"
->>>>>>> 3503a09 (add: update CLAUDE.md with PR creation instructions)
+  - メッセージは「add / fix / update / refactor」などアクションを先頭にし、変更内容の簡潔な要約を記載。
+  - 必要に応じて Co‑Authored‑By を追加。
     - メッセージは「add / fix / update / refactor」などアクションを先頭にし、変更内容の簡潔な要約を記載。
     - 必要に応じて Co‑Authored‑By を追加。
   5. ローカルテスト・lint
@@ -148,7 +145,6 @@ EOF
 3. **GitHub Actions**（任意）
    `feature/**` で始まるブランチが push されると、`auto-pr.yml` が自動で PR を作成します。
 
-<<<<<<< HEAD
 これにより、手動で `git push` → `gh pr create` を行う手間が省けます。
 - PR 作成は必須です。変更を加えたブランチを GitHub にプッシュ後、PR を作成してください。
 - PR テンプレート（`PULL_REQUEST_TEMPLATE.md`）に従い、以下の必須項目を記入してください。
@@ -157,6 +153,3 @@ EOF
   - Test Plan
   - Notes
 - テンプレートに沿わない PR はレビューで拒否します。
-=======
-これにより、手動で `git push` → `gh pr create` を行う手間が省けます。
->>>>>>> 3503a09 (add: update CLAUDE.md with PR creation instructions)

@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import AnswerResultsView, { getGrade } from "../components/AnswerResultsView";
+import AnswerResultsView from "../components/AnswerResultsView";
 import { AnswerResult } from "../domain/AnswerResult";
 import Quiz from "../domain/Quiz";
 
