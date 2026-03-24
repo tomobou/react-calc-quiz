@@ -10,9 +10,9 @@
   - ライフサイクルメソッドの代替を実装。
 
 ## 3. ユニットテストの拡張
-- [ ] **AnswerResultsView の `getGrade` 関数をテスト**
+- [x] **AnswerResultsView の `getGrade` 関数をテスト**
   - さまざまな入力に対して正しいグレードが返るか検証。
-- [ ] **AnswerResultsView のレンダリングテスト**
+- [x] **AnswerResultsView のレンダリングテスト**
   - 正しい結果行が表示されるか、クリックで非表示になるかを確認。
 
 ## 4. ESLint/Prettier ルールの強化
