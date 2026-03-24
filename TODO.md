@@ -16,7 +16,7 @@
   - 正しい結果行が表示されるか、クリックで非表示になるかを確認。
 
 ## 4. ESLint/Prettier ルールの強化
-- [ ] **プロジェクト全体に `no-undef`、`no-unused-vars`** などのルールを追加
+- [x] **プロジェクト全体に `no-undef`、`no-unused-vars`** などのルールを追加
   - ルールを `.eslintrc.js` へ追加し、CI でチェック。
 
 ## 5. CI/CD の設定
