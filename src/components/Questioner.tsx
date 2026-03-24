@@ -12,42 +12,33 @@ interface QuestionerProps {
   wrongCount: number;
 }
 
-export default class Questioner extends React.Component<QuestionerProps> {
-  render() {
-    if (this.props.currentQuiz) {
-      return (
-        <div className="questioner">
-          <h5>
-            {this.props.whichQuiz + 1}問目（ぜんぶで {this.props.quizs.length}{" "}
-            問）
-          </h5>
-          <div className="question-content">
-            {this.props.currentQuiz && this.props.currentQuiz.q}
-            {this.props.wrongCount > 0 && (
-              <div className="shake">
-                {"".padStart(this.props.wrongCount, "×")}
-              </div>
-            )}
-            <div className="voice-toggle-container">
-              <button
-                className={
-                  this.props.voiceEnabled ? "voice-enabled" : "voice-disabled"
-                }
-                aria-pressed={this.props.voiceEnabled}
-                onClick={this.props.onToggleVoice}
-              >
-                {this.props.voiceEnabled ? "音声入力 ON" : "音声入力 OFF"}
-              </button>
-            </div>
+export default function Questioner(props: QuestionerProps) {
+  if (props.currentQuiz) {
+    return (
+      <div className="questioner">
+        <h5>
+          {props.whichQuiz + 1}問目（ぜんぶで {props.quizs.length} " 問）
+        </h5>
+        <div className="question-content">
+          {props.currentQuiz && props.currentQuiz.q}
+          {props.wrongCount > 0 && (
+            <div className="shake">{"".padStart(props.wrongCount, "×")}</div>
+          )}
+          <div className="voice-toggle-container">
+            <button
+              className={
+                props.voiceEnabled ? "voice-enabled" : "voice-disabled"
+              }
+              aria-pressed={props.voiceEnabled}
+              onClick={props.onToggleVoice}
+            >
+              {props.voiceEnabled ? "音声入力 ON" : "音声入力 OFF"}
+            </button>
           </div>
         </div>
-      );
-    } else {
-      return (
-        <QuizSelector
-          setQuizs={(quizs) => this.props.setQuizs(quizs)}
-        ></QuizSelector>
-      );
-    }
+      </div>
+    );
+  } else {
+    return <QuizSelector setQuizs={(quizs) => props.setQuizs(quizs)} />;
   }
 }
