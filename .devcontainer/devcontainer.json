@@ -30,7 +30,7 @@
 	},
 
 
-	"initializeCommand": "ip route | grep default | awk '{print \"ANTHROPIC_BASE_URL=http://\" $3 \":11434\"}' | head -1 > ${localWorkspaceFolder}/.devcontainer/.env",
+	"initializeCommand": "mkdir -p ${localEnv:HOME}/claude-volumes/react-calc-quiz && ip route | grep default | awk '{print \"ANTHROPIC_BASE_URL=http://\" $3 \":11434\"}' | head -1 > ${localWorkspaceFolder}/.devcontainer/.env",
 	"runArgs": [ 
 		"--env-file", "${localWorkspaceFolder}/.devcontainer/.env", 
 		"--dns=8.8.8.8", "--dns=8.8.4.4"
@@ -39,7 +39,7 @@
 
 
 	"mounts": [
-		"source=${localEnv:HOME}/.claude/skills,target=/home/node/.claude/skills,type=bind,readonly",
+		"source=${localEnv:HOME}/claude-volumes/react-calc-quiz,target=/home/node/.claude,type=bind",
 		"source=${localEnv:HOME}/.config/gh,target=/home/node/.config/gh,type=bind,readonly"
 	],
 	"remoteUser": "node"
