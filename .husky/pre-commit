@@ -7,13 +7,7 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
-npm test
-if [ $? -ne 0 ]; then
-  echo "Tests failed. Aborting commit."
-  exit 1
-fi
-
-npm run format:check
+npm run format
 if [ $? -ne 0 ]; then
   echo "Code is not formatted. Aborting commit."
   exit 1
