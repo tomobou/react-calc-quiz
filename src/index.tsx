@@ -114,12 +114,12 @@ class Game extends React.Component<GameProps, GameStates> {
           onToggleVoice={this.toggleVoiceEnabled}
         />
         {this.state.endTime && (
-          <>
+          <div onClick={this.resetGame} style={{ cursor: "pointer" }}>
             <AnswerResultsView results={this.state.results} />
             <button onClick={this.resetGame} style={{ marginTop: "10px" }}>
               再挑戦
             </button>
-          </>
+          </div>
         )}
       </div>
     );
