@@ -9,7 +9,6 @@ interface VoiceNumberSelectorState {
   recognizedText: string;
 }
 
-
 export default class VoiceNumberSelector extends React.Component<
   VoiceNumberSelectorProps,
   VoiceNumberSelectorState
@@ -112,13 +111,14 @@ export default class VoiceNumberSelector extends React.Component<
             `}
           onClick={this.toggleVoiceInput}
         >
-          {this.state.isListening ? `🎤 リスニング中...  ${this.state.recognizedText}` : "🎤 音声入力 ON"}
+          {this.state.isListening
+            ? `🎤 リスニング中...  ${this.state.recognizedText}`
+            : "🎤 音声入力 ON"}
         </button>
       </div>
     );
   }
 }
-
 
 const voiceToNumberMap: { [key: string]: string } = {
   ゼロ: "0",

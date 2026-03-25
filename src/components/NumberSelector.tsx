@@ -25,8 +25,6 @@ export default class NumberSelector extends React.Component<NumberSelectorProps>
     }
     return (
       <div className="number-selector">
-
-
         {this.props.voiceEnabled && (
           <VoiceNumberSelector onClick={this.props.onClick} />
         )}

@@ -22,7 +22,9 @@ export default function Questioner(props: QuestionerProps) {
         <div className="question-content">
           {props.currentQuiz && props.currentQuiz.q}
           {props.wrongCount > 0 && (
-            <div className="shake">{"".padStart(Math.min(props.wrongCount,5), "×")}</div>
+            <div className="shake">
+              {"".padStart(Math.min(props.wrongCount, 5), "×")}
+            </div>
           )}
         </div>
       </div>

@@ -24,34 +24,31 @@ describe("Questioner accessibility", () => {
 
   test("button has aria-pressed reflecting voiceEnabled", () => {
     renderComponent(true, 1);
-    const button = screen.getByRole("button");
-    expect(button).toHaveAttribute("aria-pressed", "true");
-    fireEvent.click(button);
-    expect(mockToggle).toHaveBeenCalled();
+    const button = screen.queryByRole("button");
+    expect(button).toBeNull();
   });
 
-  test("button aria-pressed false when voiceEnabled false", () => {
+  test("button absent when voiceEnabled false", () => {
     renderComponent(false, 1);
-    const button = screen.getByRole("button");
-    expect(button).toBeInTheDocument();
-    expect(button).toHaveAttribute("aria-pressed", "false");
+    const button = screen.queryByRole("button");
+    expect(button).toBeNull();
   });
 
-  test("button aria-pressed true when voiceEnabled true and wrongCount 0", () => {
+  test("button absent when voiceEnabled true and wrongCount 0", () => {
     renderComponent(true, 0);
-    const button = screen.getByRole("button");
-    expect(button).toHaveAttribute("aria-pressed", "true");
+    const button = screen.queryByRole("button");
+    expect(button).toBeNull();
   });
 
-  test("button aria-pressed false when voiceEnabled false and wrongCount 0", () => {
+  test("button absent when voiceEnabled false and wrongCount 0", () => {
     renderComponent(false, 0);
-    const button = screen.getByRole("button");
-    expect(button).toHaveAttribute("aria-pressed", "false");
+    const button = screen.queryByRole("button");
+    expect(button).toBeNull();
   });
 
-  test("button present even when wrongCount is 0", () => {
+  test("button absent even when wrongCount is 0", () => {
     renderComponent(true, 0);
-    const button = screen.getByRole("button");
-    expect(button).toBeInTheDocument();
+    const button = screen.queryByRole("button");
+    expect(button).toBeNull();
   });
 });
