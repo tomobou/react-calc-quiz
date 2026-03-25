@@ -78,7 +78,7 @@ export default function QuizSelector({ setQuizs }: QuizSelectorProps) {
   ];
 
   return (
-    <div className="questioner">
+    <div className="question-card">
       <h5>もんだいをえらんでね！</h5>
       <div className="question-select">
         {quizButtons.map((quizButton, index) => (
