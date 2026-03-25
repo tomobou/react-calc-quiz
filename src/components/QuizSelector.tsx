@@ -78,19 +78,22 @@ export default function QuizSelector({ setQuizs }: QuizSelectorProps) {
   ];
 
   return (
-    <div className="questioner">
+    <div className="question-card">
       <h5>もんだいをえらんでね！</h5>
       <div className="question-select">
         {quizButtons.map((quizButton, index) => (
-          <QuizButton
-            key={"question-select-item-" + index}
-            name={quizButton.name}
-            remarks={quizButton.remarks}
-            color={quizButton.color}
+          <div
+            className="question-select-item"
+            style={{ backgroundColor: quizButton.color }}
             onClick={() =>
               setQuizs(quizButton.quizBook.quizs(quizButton.quizCount))
             }
-          />
+          >
+            <div className="question-select-item-name">{quizButton.name}</div>
+            <div className="question-select-item-remarks">
+              {quizButton.remarks}
+            </div>
+          </div>
         ))}
       </div>
     </div>
