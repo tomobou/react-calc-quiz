@@ -82,7 +82,18 @@ class Game extends React.Component<GameProps, GameStates> {
   toggleVoiceEnabled = () => {
     this.setState({ voiceEnabled: !this.state.voiceEnabled });
   };
-  render() {
+  resetGame = () => {
+    this.setState({
+      quizs: [],
+      results: [],
+      currentQuiz: undefined,
+      whichQuiz: -1,
+      wrongCount: 0,
+      startTime: undefined,
+      endTime: undefined,
+    });
+  };
+
     return (
       <div className="game">
         <Questioner
@@ -103,6 +114,7 @@ class Game extends React.Component<GameProps, GameStates> {
         />
         {this.state.endTime && (
           <AnswerResultsView results={this.state.results} />
+          <button onClick={this.resetGame} style={{marginTop: '10px'}}>再挑戦</button>
         )}
       </div>
     );
