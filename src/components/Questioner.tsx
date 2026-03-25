@@ -22,16 +22,16 @@ export default function Questioner(props: QuestionerProps) {
         <div className="question-content">
           {props.currentQuiz && props.currentQuiz.q}
           {props.wrongCount > 0 && (
-            <div className="shake">{''.padStart(props.wrongCount, '×')}</div>
+            <div className="shake">{"".padStart(props.wrongCount, "×")}</div>
           )}
         </div>
         <div className="controls-section">
           <button
-            className={props.voiceEnabled ? 'voice-enabled' : 'voice-disabled'}
+            className={props.voiceEnabled ? "voice-enabled" : "voice-disabled"}
             aria-pressed={props.voiceEnabled}
             onClick={props.onToggleVoice}
           >
-            {props.voiceEnabled ? '音声入力 ON' : '音声入力 OFF'}
+            {props.voiceEnabled ? "音声入力 ON" : "音声入力 OFF"}
           </button>
         </div>
       </div>
