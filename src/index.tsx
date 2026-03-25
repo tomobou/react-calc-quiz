@@ -94,6 +94,7 @@ class Game extends React.Component<GameProps, GameStates> {
     });
   };
 
+  render() {
     return (
       <div className="game">
         <Questioner
@@ -113,8 +114,12 @@ class Game extends React.Component<GameProps, GameStates> {
           onToggleVoice={this.toggleVoiceEnabled}
         />
         {this.state.endTime && (
-          <AnswerResultsView results={this.state.results} />
-          <button onClick={this.resetGame} style={{marginTop: '10px'}}>再挑戦</button>
+          <>
+            <AnswerResultsView results={this.state.results} />
+            <button onClick={this.resetGame} style={{ marginTop: "10px" }}>
+              再挑戦
+            </button>
+          </>
         )}
       </div>
     );
