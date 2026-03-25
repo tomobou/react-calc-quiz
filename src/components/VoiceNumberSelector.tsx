@@ -171,7 +171,7 @@ export default class VoiceNumberSelector extends React.Component<
         this.recognition.start();
       }
     } else {
-      alert("お使いのブラウザでは音声認識がサポートされていません");
+      alert("音声認識がサポートされていません");
     }
   };
 
