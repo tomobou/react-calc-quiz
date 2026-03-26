@@ -68,7 +68,7 @@ export default function AnswerResultsView({ results }: AnswerResultsViewProps) {
     >
       <div>しゅうりょうー</div>
       <div>{(totalLapTime / 1000).toFixed(3)}秒でできたよ。</div>
-      <img src={`/img/grade${grade}.png`} alt="grade" />
+      <img src={`./img/grade${grade}.png`} alt="grade" />
       <table className="answer-results-view">
         <thead>
           <tr>
