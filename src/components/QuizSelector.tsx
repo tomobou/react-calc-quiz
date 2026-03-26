@@ -91,7 +91,7 @@ export default function QuizSelector({ setQuizs }: QuizSelectorProps) {
       <div className="question-select">
         {quizButtons.map((quizButton, _index) => (
           <div
-            key={quizButton.id}
+            key={"question-select-item-" + quizButton.id}
             className="question-select-item"
             style={{ backgroundColor: quizButton.color }}
             onClick={() =>
