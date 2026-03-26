@@ -45,6 +45,10 @@ body {
   transform: translateY(-4px);
   box-shadow: 0 6px 12px rgba(0,0,0,0.1);
 }
+.question-select-item-remarks {
+  margin: 0.5rem;
+  font-size: small;
+}
 
 .question-count {
   font-family: var(--font-display);
