@@ -108,9 +108,7 @@ class Game extends React.Component<GameProps, GameStates> {
         />
         <NumberSelector
           onClick={(value: string) => this.handleSelect(value)}
-          voiceEnabled={
-            this.state.voiceEnabled && this.state.currentQuiz !== undefined
-          }
+          voiceEnabled={this.state.voiceEnabled}
           onToggleVoice={this.toggleVoiceEnabled}
         />
         {this.state.endTime && (
