@@ -25,7 +25,7 @@ export default function QuizSelector({ setQuizs }: QuizSelectorProps) {
   const quizButtons: QuizButtonInfo[] = [
     {
       id: "101",
-      name: "れんしゅう",
+      name: "たしざん１",
       remarks: "３もん",
       color: "#D8898A",
       quizBook: tasizan1,
