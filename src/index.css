@@ -109,15 +109,15 @@ body {
 
 .number-selector-item {
   flex: 1 1 0;
-  min-width: 0;
+  width: calc(100% / 5 - 20px);
   font-size: 1.5rem;
   padding: 1rem;
   margin: 0.5rem;
-  background-color: var(--card-bg);
   border-radius: 8px;
   border: none;
   cursor: pointer;
   transition: transform 0.2s;
+  background-color: rgb(184, 245, 245);
 }
 .number-selector-item:hover { transform: scale(1.05); }
 
