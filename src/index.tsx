@@ -82,6 +82,18 @@ class Game extends React.Component<GameProps, GameStates> {
   toggleVoiceEnabled = () => {
     this.setState({ voiceEnabled: !this.state.voiceEnabled });
   };
+  resetGame = () => {
+    this.setState({
+      quizs: [],
+      results: [],
+      currentQuiz: undefined,
+      whichQuiz: -1,
+      wrongCount: 0,
+      startTime: undefined,
+      endTime: undefined,
+    });
+  };
+
   render() {
     return (
       <div className="game">
@@ -96,13 +108,13 @@ class Game extends React.Component<GameProps, GameStates> {
         />
         <NumberSelector
           onClick={(value: string) => this.handleSelect(value)}
-          voiceEnabled={
-            this.state.voiceEnabled && this.state.currentQuiz !== undefined
-          }
+          voiceEnabled={this.state.voiceEnabled}
           onToggleVoice={this.toggleVoiceEnabled}
         />
         {this.state.endTime && (
-          <AnswerResultsView results={this.state.results} />
+          <div onClick={this.resetGame} style={{ cursor: "pointer" }}>
+            <AnswerResultsView results={this.state.results} />
+          </div>
         )}
       </div>
     );
