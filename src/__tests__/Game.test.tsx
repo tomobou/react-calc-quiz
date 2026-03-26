@@ -41,6 +41,5 @@ describe("Game component integration", () => {
         expect(screen.queryByText(/問目/)).toBeNull();
       });
     }
-
   });
 });
