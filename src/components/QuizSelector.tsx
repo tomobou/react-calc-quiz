@@ -1,6 +1,5 @@
-import React from "react";
 import Quiz from "../domain/Quiz";
-import QuizButton from "./QuizButton";
+
 import {
   QuizBook,
   tasizan1,
@@ -10,6 +9,7 @@ import {
 } from "../domain/QuizBook";
 
 interface QuizButtonInfo {
+  id: string;
   name: string;
   remarks?: string;
   color: string;
@@ -24,6 +24,7 @@ interface QuizSelectorProps {
 export default function QuizSelector({ setQuizs }: QuizSelectorProps) {
   const quizButtons: QuizButtonInfo[] = [
     {
+      id: "101",
       name: "れんしゅう",
       remarks: "３もん",
       color: "#D8898A",
@@ -31,12 +32,14 @@ export default function QuizSelector({ setQuizs }: QuizSelectorProps) {
       quizCount: 3,
     },
     {
+      id: "100",
       name: "たしざん１",
       remarks: "ぜんぶ",
       color: "#D8898A",
       quizBook: tasizan1,
     },
     {
+      id: "201",
       name: "ひきざん２",
       remarks: "５もん",
       color: "#84B7DC",
@@ -44,12 +47,14 @@ export default function QuizSelector({ setQuizs }: QuizSelectorProps) {
       quizCount: 5,
     },
     {
+      id: "200",
       name: "ひきざん２",
       remarks: "ぜんぶ",
       color: "#84B7DC",
       quizBook: hikizan2,
     },
     {
+      id: "301",
       name: "たしざん３",
       remarks: "５もん",
       color: "#F8BA62",
@@ -57,12 +62,14 @@ export default function QuizSelector({ setQuizs }: QuizSelectorProps) {
       quizCount: 5,
     },
     {
+      id: "300",
       name: "たしざん３",
       remarks: "ぜんぶ",
       color: "#F8BA62",
       quizBook: tasizan3,
     },
     {
+      id: "401",
       name: "ひきざん４",
       remarks: "５もん",
       color: "#86A884",
@@ -70,6 +77,7 @@ export default function QuizSelector({ setQuizs }: QuizSelectorProps) {
       quizCount: 5,
     },
     {
+      id: "400",
       name: "ひきざん４",
       remarks: "ぜんぶ",
       color: "#86A884",
@@ -81,8 +89,9 @@ export default function QuizSelector({ setQuizs }: QuizSelectorProps) {
     <div className="question-card">
       <h5>もんだいをえらんでね！</h5>
       <div className="question-select">
-        {quizButtons.map((quizButton, index) => (
+        {quizButtons.map((quizButton, _index) => (
           <div
+            key={quizButton.id}
             className="question-select-item"
             style={{ backgroundColor: quizButton.color }}
             onClick={() =>
