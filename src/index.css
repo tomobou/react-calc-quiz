@@ -89,7 +89,6 @@ body {
   cursor: pointer;
 }
 
-/* Existing styles preserved where necessary */
 
 /* Shake animation */
 .shake {
@@ -107,7 +106,6 @@ body {
   100% {transform: translate(0px, 0px) rotateZ(0deg)}
 }
 
-/* Other component styles remain unchanged */
 
 .number-selector-item {
   flex: 1 1 0;
@@ -122,3 +120,22 @@ body {
   transition: transform 0.2s;
 }
 .number-selector-item:hover { transform: scale(1.05); }
+
+.answer-result{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: white;
+    width: 100%;
+    min-height: 100%;
+    max-height: 500%;
+    animation: feadInFromBottom 1s;
+}
+@keyframes feadInFromBottom {
+    from {
+      top: 100%;
+    }
+    to {
+      top: 0px;
+    }
+  }
