@@ -1,5 +1,6 @@
 import React from "react";
-import Quiz from "../domain/Quiz";
+import { useGame } from "./useGame";
+import { useGame } from "./useGame";
 import QuizSelector from "../components/QuizSelector";
 
 interface QuestionerProps {
@@ -12,24 +13,33 @@ interface QuestionerProps {
   wrongCount: number;
 }
 
-export default function Questioner(props: QuestionerProps) {
-  if (props.currentQuiz) {
+export default function Questioner() {
+  const {
+    quizs,
+    currentQuiz,
+    whichQuiz,
+    wrongCount,
+    voiceEnabled,
+    toggleVoice,
+    startGame,
+  } = useGame();
+  if (currentQuiz) {
     return (
       <div className="question-card">
         <h5 className="question-count">
-          {props.whichQuiz + 1}問目（ぜんぶで {props.quizs.length} 問）
+          {whichQuiz + 1}問目（ぜんぶで {quizs.length} 問）
         </h5>
         <div className="question-content">
-          {props.currentQuiz && props.currentQuiz.q}
-          {props.wrongCount > 0 && (
+          {currentQuiz.q}
+          {wrongCount > 0 && (
             <div className="shake">
-              {"".padStart(Math.min(props.wrongCount, 5), "×")}
+              {"".padStart(Math.min(wrongCount, 5), "×")}
             </div>
           )}
         </div>
       </div>
     );
   } else {
-    return <QuizSelector setQuizs={(quizs) => props.setQuizs(quizs)} />;
+    return <QuizSelector setQuizs={startGame} />;
   }
 }
