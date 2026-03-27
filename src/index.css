@@ -95,6 +95,27 @@ body {
 
 
 /* Shake animation */
+
+/* Responsive layout for vertical screens */
+.game {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+@media (max-width: 480px) {
+  .question-content {
+    font-size: 1.5rem;
+  }
+  .number-selector-item {
+    font-size: 1.2rem;
+  }
+}
+
+
 .shake {
   display: inline-block;
   color: #DD6666;
